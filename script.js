@@ -76,6 +76,9 @@ function setTheme(t){document.documentElement.dataset.theme=t;localStorage.setIt
 themeSelect.addEventListener('change',e=>setTheme(e.target.value));
 setTheme(localStorage.getItem('jw-theme')||'nebula');
 
+// Resume button state
+(function(){const btn=document.getElementById('resumeBtn'),note=document.getElementById('resumeNote');if(!btn)return;fetch('assets/joel-resume.pdf',{method:'HEAD'}).then(r=>{if(r.ok){btn.style.opacity='1';note.textContent='PDF found — click to download.'}else{btn.style.opacity='.55';btn.setAttribute('aria-disabled','true')}}).catch(()=>{btn.style.opacity='.55'})})();
+
 // LinkedIn filter
 document.querySelectorAll('.li-filter').forEach(btn=>{
   btn.addEventListener('click',()=>{
