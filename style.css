@@ -32,60 +32,54 @@ footer{color:var(--muted)}
 [data-theme="golden"]{--bg:#140a02;--bg2:#2b1603;--panel:rgba(255,255,255,.06);--text:#fffbeb;--muted:#e7d3b3;--purple:#f59e0b;--cyan:#fcd34d;--orange:#fb923c;--grad:linear-gradient(90deg,#f59e0b,#fcd34d,#fb923c)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh;position:relative}
 /* BACKGROUND SYSTEM -------------------------------------------------------
-   body::before  = shared glow + vignette (always on)
-   body::after   = the swappable skin, keyed off html[data-bg="N"]
+   Deep-space gradient + the canvas starfield (#stars) + soft nebula glow.
+   The photo layers were removed; the page is pure CSS + canvas now.
    ------------------------------------------------------------------------ */
 body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
   background:
-    radial-gradient(ellipse at 20% 20%,rgba(139,92,246,.18),transparent 55%),
-    radial-gradient(ellipse at 85% 30%,rgba(34,211,238,.14),transparent 50%),
-    radial-gradient(ellipse at 50% 85%,rgba(251,146,60,.08),transparent 55%);
+    /* diagonal light shaft, like the reference */
+    linear-gradient(118deg,
+      rgba(34,211,238,.10) 0%,
+      rgba(139,92,246,.16) 34%,
+      rgba(232,121,249,.14) 52%,
+      transparent 70%),
+    /* deep blue -> purple, top to bottom */
+    linear-gradient(180deg,
+      #071a2b 0%,
+      #0b1533 22%,
+      #150f3a 48%,
+      #1d1140 68%,
+      #0a0520 100%),
+    /* nebula blooms */
+    radial-gradient(ellipse at 18% 12%,rgba(139,92,246,.30),transparent 58%),
+    radial-gradient(ellipse at 82% 26%,rgba(34,211,238,.20),transparent 55%),
+    radial-gradient(ellipse at 52% 88%,rgba(232,121,249,.16),transparent 60%);
 }
-body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  transition:opacity .4s ease;
+
+/* subtle grid, matching the reference's faint lines */
+.space-grid{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(rgba(139,92,246,.055) 1px,transparent 1px) 0 0/72px 72px,
+    linear-gradient(90deg,rgba(139,92,246,.055) 1px,transparent 1px) 0 0/72px 72px;
+  mask-image:linear-gradient(180deg,black,black 65%,transparent);
 }
+
+body::after{content:none}
+
 
 /* --- 1 · CINEMATIC (the photo, faded out on scroll) --------------------- */
-html[data-bg="1"] body::after{
-  background:
-    linear-gradient(180deg,rgba(5,2,15,.55) 0%,rgba(5,2,15,.82) 38%,
-                    rgba(5,2,15,.94) 62%,var(--bg) 88%),
-    url(assets/cinematic-journey.png) center 22%/cover no-repeat fixed;
-}
 
 /* --- 2 · MESH GRADIENT (pure CSS, no image, always crisp) --------------- */
-html[data-bg="2"] body::after{
-  background:
-    radial-gradient(at 12% 8%,  rgba(139,92,246,.55) 0px, transparent 45%),
-    radial-gradient(at 88% 12%, rgba(34,211,238,.42) 0px, transparent 45%),
-    radial-gradient(at 78% 78%, rgba(232,121,249,.36) 0px, transparent 45%),
-    radial-gradient(at 18% 86%, rgba(251,146,60,.30) 0px, transparent 45%),
-    linear-gradient(180deg,var(--bg) 0%,#0a0520 55%,var(--bg) 100%);
-}
 
 /* --- 3 · NEBULA (photo, but held soft and dark like deep space) --------- */
-html[data-bg="3"] body::after{
-  background:
-    radial-gradient(ellipse at 50% 30%,rgba(5,2,15,.35),rgba(5,2,15,.9) 70%),
-    url(assets/cinematic-journey.png) center 45%/cover no-repeat fixed;
-  filter:saturate(.7) contrast(1.05);
-  opacity:.85;
-}
 
 /* --- 4 · GRID / BLUEPRINT (technical, matches the terminal vibe) -------- */
-html[data-bg="4"] body::after{
-  background:
-    linear-gradient(rgba(139,92,246,.09) 1px,transparent 1px) 0 0/64px 64px,
-    linear-gradient(90deg,rgba(139,92,246,.09) 1px,transparent 1px) 0 0/64px 64px,
-    radial-gradient(ellipse at 50% 0%,rgba(139,92,246,.22),transparent 60%),
-    linear-gradient(180deg,var(--bg),#0a0520 60%,var(--bg));
-}
 
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.95}
 .nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;opacity:.55;animation:drift 22s ease-in-out infinite alternate}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
 .nebula.n2{width:420px;height:420px;background:var(--cyan);top:25%;right:-140px;animation-delay:-6s}
@@ -147,9 +141,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .theme-btn:hover,.nav-cta:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(34,211,238,.35)}
 .burger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:82px 6vw 10px;position:relative;z-index:1;overflow:hidden}
-.hero-art{position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none}
+.hero-art{display:none}
 .hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-art-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,2,15,.55),rgba(5,2,15,.72));backdrop-filter:blur(1px)}
+.hero-art-vignette{display:none}
 .gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .gal-item{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;aspect-ratio:4/3;background:#0a0620}
 .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.9,.2,1)}

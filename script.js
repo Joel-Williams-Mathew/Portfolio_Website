@@ -18,7 +18,7 @@ const typedEl=document.getElementById('typed');let ri=0,ci=0,del=false;
 
 // Marquee
 const items=['PYTHON','TENSORFLOW','LLMS','LANGCHAIN','RAG','OPENCV','CNN','REACT','NASA SPACE APPS','GEN AI'];
-document.getElementById('marquee').innerHTML=[...items,...items].map(t=>`<span>✦ ${t}</span>`).join('');
+document.getElementById('marquee').innerHTML=[...items,...items].map(t=>`<span>âœ¦ ${t}</span>`).join('');
 
 // Reveal + bars + counters
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.style.getPropertyValue('--w'));
@@ -77,7 +77,7 @@ themeSelect.addEventListener('change',e=>setTheme(e.target.value));
 setTheme(localStorage.getItem('jw-theme')||'nebula');
 
 // Resume button state
-(function(){const btn=document.getElementById('resumeBtn'),note=document.getElementById('resumeNote');if(!btn)return;fetch('assets/joel-resume.pdf',{method:'HEAD'}).then(r=>{if(r.ok){btn.style.opacity='1';note.textContent='PDF found — click to download.'}else{btn.style.opacity='.55';btn.setAttribute('aria-disabled','true')}}).catch(()=>{btn.style.opacity='.55'})})();
+(function(){const btn=document.getElementById('resumeBtn'),note=document.getElementById('resumeNote');if(!btn)return;fetch('assets/joel-resume.pdf',{method:'HEAD'}).then(r=>{if(r.ok){btn.style.opacity='1';note.textContent='PDF found â€” click to download.'}else{btn.style.opacity='.55';btn.setAttribute('aria-disabled','true')}}).catch(()=>{btn.style.opacity='.55'})})();
 
 // LinkedIn filter
 document.querySelectorAll('.li-filter').forEach(btn=>{
@@ -93,15 +93,3 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
   });
 });
 
-// Background skin -------------------------------------------------------------
-// ?bg=1..4 picks a background. Choice is remembered in localStorage so it
-// survives navigation; defaults to 1 (cinematic).
-(function(){
-  var ok = {1:1, 2:1, 3:1, 4:1};
-  var q = new URLSearchParams(location.search).get('bg');
-  var saved = null;
-  try { saved = localStorage.getItem('bgSkin'); } catch(e){}
-  var pick = ok[q] ? q : (ok[saved] ? saved : '1');
-  document.documentElement.setAttribute('data-bg', pick);
-  try { localStorage.setItem('bgSkin', pick); } catch(e){}
-})();
