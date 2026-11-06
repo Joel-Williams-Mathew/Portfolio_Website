@@ -93,3 +93,31 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
   });
 });
 
+// Space scene parallax ---------------------------------------------------------
+// Every element with data-depth drifts by scroll position * its depth, so the
+// planet, moon, satellite and orbit rings move at different speeds.
+(function(){
+  var els = document.querySelectorAll('.space-scene [data-depth]');
+  if(!els.length) return;
+
+  var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!motionOK) return;
+
+  var latest = 0, ticking = false;
+
+  function apply(){
+    els.forEach(function(el){
+      var d = parseFloat(el.dataset.depth) || 0;
+      el.style.transform = 'translate3d(0,' + (latest * -d * 6).toFixed(2) + 'px,0)';
+    });
+    ticking = false;
+  }
+
+  function onScroll(){
+    latest = window.scrollY || window.pageYOffset || 0;
+    if(!ticking){ ticking = true; requestAnimationFrame(apply); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  apply();
+})();
