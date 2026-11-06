@@ -33,7 +33,7 @@ footer{color:var(--muted)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(139,92,246,.18),transparent 55%),radial-gradient(ellipse at 85% 30%,rgba(34,211,238,.14),transparent 50%),radial-gradient(ellipse at 50% 85%,rgba(251,146,60,.08),transparent 55%);pointer-events:none;z-index:0}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(5,2,15,.55) 0%,rgba(5,2,15,.82) 38%,rgba(5,2,15,.94) 62%,var(--bg) 88%) ,url(assets/cinematic-journey.png) center 22%/cover no-repeat fixed,radial-gradient(ellipse at 20% 20%,rgba(139,92,246,.18),transparent 55%),radial-gradient(ellipse at 85% 30%,rgba(34,211,238,.14),transparent 50%),radial-gradient(ellipse at 50% 85%,rgba(251,146,60,.08),transparent 55%);pointer-events:none;z-index:0}
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
 .nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;opacity:.55;animation:drift 22s ease-in-out infinite alternate}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
@@ -96,7 +96,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .theme-btn:hover,.nav-cta:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(34,211,238,.35)}
 .burger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:82px 6vw 10px;position:relative;z-index:1;overflow:hidden}
-.hero-art{position:absolute;inset:0;z-index:-1;opacity:.32;pointer-events:none}
+.hero-art{position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none}
 .hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hero-art-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,2,15,.55),rgba(5,2,15,.72));backdrop-filter:blur(1px)}
 .gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
