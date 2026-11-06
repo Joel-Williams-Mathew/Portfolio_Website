@@ -92,3 +92,16 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     });
   });
 });
+
+// Background skin -------------------------------------------------------------
+// ?bg=1..4 picks a background. Choice is remembered in localStorage so it
+// survives navigation; defaults to 1 (cinematic).
+(function(){
+  var ok = {1:1, 2:1, 3:1, 4:1};
+  var q = new URLSearchParams(location.search).get('bg');
+  var saved = null;
+  try { saved = localStorage.getItem('bgSkin'); } catch(e){}
+  var pick = ok[q] ? q : (ok[saved] ? saved : '1');
+  document.documentElement.setAttribute('data-bg', pick);
+  try { localStorage.setItem('bgSkin', pick); } catch(e){}
+})();

@@ -33,7 +33,58 @@ footer{color:var(--muted)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(5,2,15,.55) 0%,rgba(5,2,15,.82) 38%,rgba(5,2,15,.94) 62%,var(--bg) 88%) ,url(assets/cinematic-journey.png) center 22%/cover no-repeat fixed,radial-gradient(ellipse at 20% 20%,rgba(139,92,246,.18),transparent 55%),radial-gradient(ellipse at 85% 30%,rgba(34,211,238,.14),transparent 50%),radial-gradient(ellipse at 50% 85%,rgba(251,146,60,.08),transparent 55%);pointer-events:none;z-index:0}
+/* BACKGROUND SYSTEM -------------------------------------------------------
+   body::before  = shared glow + vignette (always on)
+   body::after   = the swappable skin, keyed off html[data-bg="N"]
+   ------------------------------------------------------------------------ */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 20% 20%,rgba(139,92,246,.18),transparent 55%),
+    radial-gradient(ellipse at 85% 30%,rgba(34,211,238,.14),transparent 50%),
+    radial-gradient(ellipse at 50% 85%,rgba(251,146,60,.08),transparent 55%);
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  transition:opacity .4s ease;
+}
+
+/* --- 1 · CINEMATIC (the photo, faded out on scroll) --------------------- */
+html[data-bg="1"] body::after{
+  background:
+    linear-gradient(180deg,rgba(5,2,15,.55) 0%,rgba(5,2,15,.82) 38%,
+                    rgba(5,2,15,.94) 62%,var(--bg) 88%),
+    url(assets/cinematic-journey.png) center 22%/cover no-repeat fixed;
+}
+
+/* --- 2 · MESH GRADIENT (pure CSS, no image, always crisp) --------------- */
+html[data-bg="2"] body::after{
+  background:
+    radial-gradient(at 12% 8%,  rgba(139,92,246,.55) 0px, transparent 45%),
+    radial-gradient(at 88% 12%, rgba(34,211,238,.42) 0px, transparent 45%),
+    radial-gradient(at 78% 78%, rgba(232,121,249,.36) 0px, transparent 45%),
+    radial-gradient(at 18% 86%, rgba(251,146,60,.30) 0px, transparent 45%),
+    linear-gradient(180deg,var(--bg) 0%,#0a0520 55%,var(--bg) 100%);
+}
+
+/* --- 3 · NEBULA (photo, but held soft and dark like deep space) --------- */
+html[data-bg="3"] body::after{
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(5,2,15,.35),rgba(5,2,15,.9) 70%),
+    url(assets/cinematic-journey.png) center 45%/cover no-repeat fixed;
+  filter:saturate(.7) contrast(1.05);
+  opacity:.85;
+}
+
+/* --- 4 · GRID / BLUEPRINT (technical, matches the terminal vibe) -------- */
+html[data-bg="4"] body::after{
+  background:
+    linear-gradient(rgba(139,92,246,.09) 1px,transparent 1px) 0 0/64px 64px,
+    linear-gradient(90deg,rgba(139,92,246,.09) 1px,transparent 1px) 0 0/64px 64px,
+    radial-gradient(ellipse at 50% 0%,rgba(139,92,246,.22),transparent 60%),
+    linear-gradient(180deg,var(--bg),#0a0520 60%,var(--bg));
+}
+
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
 .nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;opacity:.55;animation:drift 22s ease-in-out infinite alternate}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
