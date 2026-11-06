@@ -31,8 +31,8 @@ footer{color:var(--muted)}
 [data-theme="arctic"]{--bg:#060a14;--bg2:#0b1626;--panel:rgba(255,255,255,.06);--text:#ffffff;--muted:#cbd5e1;--purple:#67e8f9;--cyan:#e0f2fe;--orange:#fcd34d;--grad:linear-gradient(90deg,#67e8f9,#e0f2fe,#fcd34d)}
 [data-theme="golden"]{--bg:#140a02;--bg2:#2b1603;--panel:rgba(255,255,255,.06);--text:#fffbeb;--muted:#e7d3b3;--purple:#f59e0b;--cyan:#fcd34d;--orange:#fb923c;--grad:linear-gradient(90deg,#f59e0b,#fcd34d,#fb923c)}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh;position:relative}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:transparent;color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh;position:relative}
 /* BACKGROUND SYSTEM -------------------------------------------------------
    Deep-space gradient + the canvas starfield (#stars) + soft nebula glow.
    The photo layers were removed; the page is pure CSS + canvas now.
