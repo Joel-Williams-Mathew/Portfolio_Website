@@ -94,43 +94,48 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
 });
 
 // View counter ---------------------------------------------------------------
-// The counter SVG is embedded as a document, so its <title> (which contains the
-// number) is readable even though the service sends no CORS headers.
-// We then paint that number ourselves, in the site's own typography.
+// The counter SVG is embedded (hidden). Its <title> holds the number, which we
+// read and then paint in the site's own typography.
 (function(){
-  const numEl = document.getElementById('viewsNum');
-  const frame = document.getElementById('viewsFrame');
-  if (!numEl || !frame) return;
+  var numEl = document.getElementById('viewsNum');
+  var frame = document.getElementById('viewsFrame');
+  if(!numEl || !frame) return;
 
-  function paint(txt){
+  function paint(val){
+    var txt = Number(val).toLocaleString();
+    if(numEl.textContent === txt) return;
     numEl.textContent = txt;
     numEl.classList.remove('bump');
     void numEl.offsetWidth;
     numEl.classList.add('bump');
   }
 
-  function pull(){
+  function read(){
     try{
-      const doc = frame.contentDocument || frame.contentWindow.document;
+      var doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
       if(!doc) return false;
-      const title = doc.querySelector('title') ? doc.querySelector('title').textContent : '';
-      const m = title.match(/(\d[\d,]*)/);
-      if(m){
-        paint(Number(m[1].replace(/,/g,'')).toLocaleString());
-        return true;
+
+      // 1) the <title> carries "hits: 47"
+      var titleEl = doc.querySelector('title');
+      if(titleEl){
+        var m = titleEl.textContent.match(/([\d,]+)/);
+        if(m){ paint(m[1].replace(/,/g,'')); return true; }
       }
-      // fallback: read any <text> node that is only digits
-      const nodes = doc.querySelectorAll('text');
-      for(const n of nodes){
-        const v = (n.textContent || '').trim();
-        if(/^[\d,]+$/.test(v)){ paint(Number(v.replace(/,/g,'')).toLocaleString()); return true; }
+      // 2) any <text> node that is digits only
+      var nodes = doc.querySelectorAll('text');
+      for(var i=0;i<nodes.length;i++){
+        var v = (nodes[i].textContent || '').trim();
+        if(/^[\d,]+$/.test(v)){ paint(v.replace(/,/g,'')); return true; }
       }
-    }catch(e){ /* ignore */ }
+    }catch(e){}
     return false;
   }
 
-  frame.addEventListener('load', function(){ setTimeout(pull, 120); });
-  // try immediately too, in case it was cached and already loaded
-  setTimeout(pull, 400);
-  setTimeout(pull, 1200);
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(read() || tries > 20) clearInterval(iv);
+  }, 250);
+
+  frame.addEventListener('load', function(){ setTimeout(read, 80); });
 })();

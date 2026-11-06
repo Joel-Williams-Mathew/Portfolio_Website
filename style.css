@@ -321,7 +321,21 @@ footer a{color:var(--text);text-decoration:none}
 .views-num.bump{animation:viewsPop .5s cubic-bezier(.2,.9,.2,1)}
 
 /* the counter document, invisible but functional */
-.views-frame{position:absolute;width:1px;height:1px;border:0;opacity:0;
-  pointer-events:none;left:-9999px}
 
 @media(max-width:900px){.views{display:none}}
+
+/* counter frame: completely out of the layout, never visible ------------------ */
+.views-frame,iframe.views-frame{
+  position:fixed !important;
+  top:-10000px !important;
+  left:-10000px !important;
+  width:10px !important;
+  height:10px !important;
+  border:0 !important;
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+  z-index:-9999 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
