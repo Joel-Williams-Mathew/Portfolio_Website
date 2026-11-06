@@ -94,15 +94,15 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
 });
 
 // View counter ---------------------------------------------------------------
-// The counter SVG is embedded (hidden). Its <title> holds the number, which we
-// read and then paint in the site's own typography.
+// views.json is written into this repo by .github/workflows/views.yml, so it is
+// served from our own origin. No CORS, no iframe - it cannot be blocked.
 (function(){
   var numEl = document.getElementById('viewsNum');
-  var frame = document.getElementById('viewsFrame');
-  if(!numEl || !frame) return;
+  if(!numEl) return;
 
   function paint(val){
     var txt = Number(val).toLocaleString();
+    if(!isFinite(Number(val))) return;
     if(numEl.textContent === txt) return;
     numEl.textContent = txt;
     numEl.classList.remove('bump');
@@ -110,32 +110,11 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     numEl.classList.add('bump');
   }
 
-  function read(){
-    try{
-      var doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
-      if(!doc) return false;
-
-      // 1) the <title> carries "hits: 47"
-      var titleEl = doc.querySelector('title');
-      if(titleEl){
-        var m = titleEl.textContent.match(/([\d,]+)/);
-        if(m){ paint(m[1].replace(/,/g,'')); return true; }
-      }
-      // 2) any <text> node that is digits only
-      var nodes = doc.querySelectorAll('text');
-      for(var i=0;i<nodes.length;i++){
-        var v = (nodes[i].textContent || '').trim();
-        if(/^[\d,]+$/.test(v)){ paint(v.replace(/,/g,'')); return true; }
-      }
-    }catch(e){}
-    return false;
-  }
-
-  var tries = 0;
-  var iv = setInterval(function(){
-    tries++;
-    if(read() || tries > 20) clearInterval(iv);
-  }, 250);
-
-  frame.addEventListener('load', function(){ setTimeout(read, 80); });
+  fetch('views.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if(d && d.views != null) paint(d.views);
+      else numEl.textContent = '0';
+    })
+    .catch(function(){ numEl.textContent = '0'; });
 })();

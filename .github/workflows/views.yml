@@ -1,0 +1,60 @@
+name: Update view count
+
+# Fetches the portfolio view count and commits it to views.json so the site can
+# read it from its own origin (no CORS, no iframe, cannot be blocked).
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-views
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch view count and write views.json
+        run: |
+          set -e
+          URL="https://hits.sh/joel-williams-mathew.github.io/Portfolio_Website.svg"
+          # fetch the badge (this also registers the visit from the runner)
+          SVG=$(curl -sSL --max-time 30 "$URL" || echo "")
+
+          # the number lives in <title>hits: 47</title> and in the <text> nodes
+          COUNT=$(printf '%s' "$SVG" | grep -oP '<title>[^<]*?(\d[\d,]*)</title>' | grep -oP '\d[\d,]*' | tr -d ',' | head -1 || echo "")
+
+          if [ -z "$COUNT" ]; then
+            # fall back to any digit-only <text> node
+            COUNT=$(printf '%s' "$SVG" | grep -oP '>\s*\d[\d,]*\s*</text>' | grep -oP '\d[\d,]*' | tr -d ',' | tail -1 || echo "")
+          fi
+
+          if [ -z "$COUNT" ]; then
+            echo "could not parse count; keeping previous value"
+            exit 0
+          fi
+
+          printf '{"views": %s, "updated": "%s"}\n' "$COUNT" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > views.json
+          echo "wrote views.json -> $COUNT"
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add views.json
+          if git diff --staged --quiet; then
+            echo "no change"
+          else
+            git commit -m "chore: update view count"
+            git pull --rebase origin main
+            git push
+          fi

@@ -324,18 +324,3 @@ footer a{color:var(--text);text-decoration:none}
 
 @media(max-width:900px){.views{display:none}}
 
-/* counter frame: completely out of the layout, never visible ------------------ */
-.views-frame,iframe.views-frame{
-  position:fixed !important;
-  top:-10000px !important;
-  left:-10000px !important;
-  width:10px !important;
-  height:10px !important;
-  border:0 !important;
-  opacity:0 !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
-  z-index:-9999 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-}
