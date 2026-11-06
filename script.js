@@ -121,3 +121,26 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
   window.addEventListener('scroll', onScroll, { passive: true });
   apply();
 })();
+
+// Live GitHub contribution stats ----------------------------------------------
+// streak.json is refreshed hourly by a GitHub Action in the profile repo, and
+// served from raw.githubusercontent.com with a cache-buster so it is always
+// current. Real-time on the site - no commits to this repo needed.
+(function(){
+  var t = document.getElementById('liveContrib');
+  var c = document.getElementById('liveStreak');
+  var l = document.getElementById('liveLongest');
+  if(!t) return;
+
+  var URL_JSON = 'https://raw.githubusercontent.com/Joel-Williams-Mathew/Joel-Williams-Mathew/main/streak.json';
+
+  fetch(URL_JSON + '?t=' + Date.now(), { cache: 'no-store' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if(!d) return;
+      if(d.total   != null) t.textContent = Number(d.total).toLocaleString();
+      if(d.current != null) c.textContent = d.current;
+      if(d.longest != null) l.textContent = d.longest;
+    })
+    .catch(function(){ /* leave the dashes */ });
+})();

@@ -372,3 +372,8 @@ footer a{color:var(--text);text-decoration:none}
 @media (max-width:900px){
   .space-scene img{object-position:center 22%}
 }
+
+/* live GitHub contributions ------------------------------------------------- */
+#liveStats{margin-top:4px}
+#liveStats strong{color:#4ade80}
+#liveStats small{letter-spacing:.04em}
