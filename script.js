@@ -22,7 +22,7 @@ document.getElementById('marquee').innerHTML=[...items,...items].map(t=>`<span>â
 
 // Reveal + bars + counters
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.style.getPropertyValue('--w'));
-e.target.querySelectorAll('[data-count]').forEach(el=>{let n=+el.dataset.count,v=0;const iv=setInterval(()=>{v+=Math.ceil(n/30);if(v>=n){v=n;clearInterval(iv)}el.textContent=v},40)});io.unobserve(e.target)}}),{threshold:.15});
+e.target.querySelectorAll('[data-count]').forEach(el=>{const n=+el.dataset.count,dec=n%1!==0;let v=0;const step=dec?n/34:n/30;const iv=setInterval(()=>{v+=step;if(v>=n){v=n;clearInterval(iv)}el.textContent=dec?v.toFixed(1):Math.ceil(v)},40)});io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // Cursor + trail + magnetic
@@ -92,14 +92,3 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     });
   });
 });
-
-// Live LinkedIn follower count ------------------------------------------------
-// Update LI_FOLLOWERS below when the number changes; the page animates to it.
-// Stored as a single constant so there is one place to edit.
-(function(){
-  const LI_FOLLOWERS = 1481;
-  const el = document.getElementById('liFollowers');
-  if (!el) return;
-  // if the HTML number and this constant disagree, the constant wins
-  if (+el.dataset.count !== LI_FOLLOWERS) el.dataset.count = LI_FOLLOWERS;
-})();
