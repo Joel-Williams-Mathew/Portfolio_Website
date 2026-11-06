@@ -92,29 +92,3 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     });
   });
 });
-
-// View counter ---------------------------------------------------------------
-// views.json is written into this repo by .github/workflows/views.yml, so it is
-// served from our own origin. No CORS, no iframe - it cannot be blocked.
-(function(){
-  var numEl = document.getElementById('viewsNum');
-  if(!numEl) return;
-
-  function paint(val){
-    var txt = Number(val).toLocaleString();
-    if(!isFinite(Number(val))) return;
-    if(numEl.textContent === txt) return;
-    numEl.textContent = txt;
-    numEl.classList.remove('bump');
-    void numEl.offsetWidth;
-    numEl.classList.add('bump');
-  }
-
-  fetch('views.json?v=' + Date.now(), { cache: 'no-store' })
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){
-      if(d && d.views != null) paint(d.views);
-      else numEl.textContent = '0';
-    })
-    .catch(function(){ numEl.textContent = '0'; });
-})();
