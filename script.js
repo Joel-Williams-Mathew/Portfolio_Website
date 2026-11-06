@@ -92,3 +92,14 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     });
   });
 });
+
+// Live LinkedIn follower count ------------------------------------------------
+// Update LI_FOLLOWERS below when the number changes; the page animates to it.
+// Stored as a single constant so there is one place to edit.
+(function(){
+  const LI_FOLLOWERS = 1481;
+  const el = document.getElementById('liFollowers');
+  if (!el) return;
+  // if the HTML number and this constant disagree, the constant wins
+  if (+el.dataset.count !== LI_FOLLOWERS) el.dataset.count = LI_FOLLOWERS;
+})();
