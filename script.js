@@ -92,3 +92,45 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     });
   });
 });
+
+// View counter ---------------------------------------------------------------
+// The counter SVG is embedded as a document, so its <title> (which contains the
+// number) is readable even though the service sends no CORS headers.
+// We then paint that number ourselves, in the site's own typography.
+(function(){
+  const numEl = document.getElementById('viewsNum');
+  const frame = document.getElementById('viewsFrame');
+  if (!numEl || !frame) return;
+
+  function paint(txt){
+    numEl.textContent = txt;
+    numEl.classList.remove('bump');
+    void numEl.offsetWidth;
+    numEl.classList.add('bump');
+  }
+
+  function pull(){
+    try{
+      const doc = frame.contentDocument || frame.contentWindow.document;
+      if(!doc) return false;
+      const title = doc.querySelector('title') ? doc.querySelector('title').textContent : '';
+      const m = title.match(/(\d[\d,]*)/);
+      if(m){
+        paint(Number(m[1].replace(/,/g,'')).toLocaleString());
+        return true;
+      }
+      // fallback: read any <text> node that is only digits
+      const nodes = doc.querySelectorAll('text');
+      for(const n of nodes){
+        const v = (n.textContent || '').trim();
+        if(/^[\d,]+$/.test(v)){ paint(Number(v.replace(/,/g,'')).toLocaleString()); return true; }
+      }
+    }catch(e){ /* ignore */ }
+    return false;
+  }
+
+  frame.addEventListener('load', function(){ setTimeout(pull, 120); });
+  // try immediately too, in case it was cached and already loaded
+  setTimeout(pull, 400);
+  setTimeout(pull, 1200);
+})();
