@@ -361,98 +361,14 @@ footer a{color:var(--text);text-decoration:none}
    which script.js multiplies by scroll position for a parallax drift.
    -------------------------------------------------------------------------- */
 .space-scene{position:fixed;inset:0;pointer-events:none;z-index:-3;overflow:hidden}
+.space-scene img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
 
-/* --- planet --- */
-.planet{
-  position:absolute;right:6vw;top:14vh;width:min(22vw,260px);aspect-ratio:1;
-  will-change:transform}
-.planet-body{
-  position:absolute;inset:0;border-radius:50%;
-  background:
-    radial-gradient(circle at 32% 28%,#8b7cf6 0%,#5b4bd6 32%,#2d2596 62%,#150f4a 100%);
-  box-shadow:
-    inset -18px -14px 40px rgba(0,0,0,.65),
-    0 0 70px rgba(139,92,246,.35);
-}
-.planet-body::after{ /* surface bands */
-  content:"";position:absolute;inset:0;border-radius:50%;
-  background:
-    linear-gradient(180deg,
-      transparent 26%,rgba(255,255,255,.07) 28%,transparent 33%,
-      transparent 52%,rgba(255,255,255,.05) 54%,transparent 60%,
-      transparent 74%,rgba(255,255,255,.04) 76%,transparent 82%);
-}
-.planet-glow{
-  position:absolute;inset:-30%;border-radius:50%;
-  background:radial-gradient(circle,rgba(139,92,246,.30),transparent 62%);
-  animation:planetPulse 9s ease-in-out infinite}
-@keyframes planetPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
-.planet-ring{
-  position:absolute;left:-32%;top:32%;width:164%;height:38%;
-  border-radius:50%;
-  border:2px solid rgba(168,85,247,.30);
-  border-bottom-color:rgba(56,189,248,.35);
-  transform:rotate(-24deg);
-  box-shadow:0 0 24px rgba(139,92,246,.25)}
 
-/* --- moon --- */
-.moon{
-  position:absolute;left:9vw;top:58vh;width:64px;aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle at 36% 32%,#d8d4ec,#8d87ab 55%,#4a4666);
-  box-shadow:inset -6px -5px 12px rgba(0,0,0,.55),0 0 30px rgba(200,200,255,.18);
-  will-change:transform}
+/* the scene is one SVG - all motion lives inside it */
 
-/* --- satellite --- */
-.satellite{
-  position:absolute;left:16vw;top:24vh;width:88px;height:44px;
-  will-change:transform;animation:satDrift 26s ease-in-out infinite}
-.sat-body{
-  position:absolute;left:34px;top:14px;width:20px;height:16px;border-radius:3px;
-  background:linear-gradient(180deg,#e7e5ff,#9a95c4);
-  box-shadow:0 0 14px rgba(139,92,246,.5)}
-.sat-panel{
-  position:absolute;top:16px;width:30px;height:12px;border-radius:2px;
-  background:
-    repeating-linear-gradient(90deg,#1e3a8a 0 4px,#2563eb 4px 8px);
-  border:1px solid rgba(147,197,253,.5);
-  box-shadow:0 0 10px rgba(37,99,235,.5)}
-.sat-panel-l{left:2px}
-.sat-panel-r{right:2px}
-.sat-dish{
-  position:absolute;left:40px;top:2px;width:12px;height:12px;border-radius:50%;
-  border:1.5px solid rgba(231,229,255,.85);
-  border-right-color:transparent;border-bottom-color:transparent;
-  transform:rotate(45deg)}
-.sat-signal{
-  position:absolute;left:44px;top:-4px;width:6px;height:6px;border-radius:50%;
-  background:#22d3ee;box-shadow:0 0 12px #22d3ee;
-  animation:satBlip 2.4s ease-in-out infinite}
-@keyframes satBlip{0%,100%{opacity:.25;transform:scale(.7)}45%{opacity:1;transform:scale(1.25)}}
-@keyframes satDrift{
-  0%,100%{transform:translate(0,0) rotate(-8deg)}
-  50%{transform:translate(26px,-18px) rotate(-2deg)}}
-
-/* --- orbit rings --- */
-.orbit-ring{
-  position:absolute;left:50%;top:50%;width:min(64vw,760px);aspect-ratio:1;
-  margin-left:calc(min(64vw,760px) / -2);margin-top:calc(min(64vw,760px) / -2);
-  border-radius:50%;border:1px dashed rgba(139,92,246,.13);
-  will-change:transform;animation:orbitSpin 140s linear infinite}
-.orbit-ring-2{
-  width:min(84vw,1000px);aspect-ratio:1;
-  margin-left:calc(min(84vw,1000px) / -2);margin-top:calc(min(84vw,1000px) / -2);
-  border-color:rgba(56,189,248,.10);
-  animation-duration:220s;animation-direction:reverse}
+/* keep the old orbit spin for any element that still references it */
 @keyframes orbitSpin{to{transform:rotate(360deg)}}
 
-@media (prefers-reduced-motion:reduce){
-  .space-scene .planet-glow,
-  .space-scene .satellite,
-  .space-scene .orbit-ring,
-  .space-scene .sat-signal{animation:none}
-}
 @media (max-width:900px){
-  .planet{right:-10vw;top:8vh;width:44vw}
-  .satellite{left:6vw;top:20vh;transform:scale(.78)}
-  .moon{width:44px;left:6vw;top:66vh}
+  .space-scene img{object-position:center 22%}
 }
