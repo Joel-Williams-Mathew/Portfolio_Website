@@ -1,10 +1,10 @@
 :root{
---bg:#05020f;--bg2:#0b0620;--panel:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);
---text:#f5f3ff;--muted:#b8b3d9;--purple:#8b5cf6;--cyan:#22d3ee;--orange:#fb923c;--pink:#e879f9;
---grad:linear-gradient(90deg,#8b5cf6,#22d3ee 55%,#fb923c);
---shadow:0 20px 60px rgba(0,0,0,.5);
+--bg:#020409;--bg2:#060d1b;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.09);
+--text:#eef2ff;--muted:#8a96b8;--purple:#a5c8ff;--cyan:#67e8f9;--orange:#f6c177;--pink:#d9c7ff;
+--grad:linear-gradient(90deg,#a5c8ff,#eef3ff 55%,#f6c177);
+--shadow:0 20px 60px rgba(0,0,0,.55);
 --radius:20px;--font:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
---card-bg:#0f0b2b;--card-text:#d6d0ef;
+--card-bg:#0a1120;--card-text:#cdd6ec;
 }
 body{letter-spacing:-.01em}
 h1{font-weight:700}
@@ -40,23 +40,23 @@ body{background:transparent;color:var(--text);font-family:var(--font);overflow-x
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:-4;
   background:
-    radial-gradient(ellipse at 20% 8%,rgba(88,80,236,.22),transparent 55%),
-    radial-gradient(ellipse at 82% 20%,rgba(56,189,248,.14),transparent 52%),
-    radial-gradient(ellipse at 60% 92%,rgba(168,85,247,.16),transparent 60%),
+    radial-gradient(ellipse at 20% 8%,rgba(56,110,224,.16),transparent 55%),
+    radial-gradient(ellipse at 82% 20%,rgba(103,232,249,.10),transparent 52%),
+    radial-gradient(ellipse at 60% 92%,rgba(99,102,241,.11),transparent 60%),
     linear-gradient(180deg,
-      #03040f 0%,
-      #050818 26%,
-      #080b24 48%,
-      #0b0a2a 70%,
-      #05060f 100%);
+      #01030a 0%,
+      #030814 26%,
+      #050e22 48%,
+      #070a1a 70%,
+      #01030a 100%);
 }
 
 /* subtle grid, matching the reference's faint lines */
 .space-grid{
   position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    linear-gradient(rgba(139,92,246,.055) 1px,transparent 1px) 0 0/72px 72px,
-    linear-gradient(90deg,rgba(139,92,246,.055) 1px,transparent 1px) 0 0/72px 72px;
+    linear-gradient(rgba(165,200,255,.04) 1px,transparent 1px) 0 0/72px 72px,
+    linear-gradient(90deg,rgba(165,200,255,.04) 1px,transparent 1px) 0 0/72px 72px;
   mask-image:linear-gradient(180deg,black,black 65%,transparent);
 }
 
@@ -76,7 +76,7 @@ body::after{content:none}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
 .nebula.n2{width:420px;height:420px;background:var(--cyan);top:25%;right:-140px;animation-delay:-6s}
 .nebula.n3{width:380px;height:380px;background:var(--orange);bottom:-120px;left:30%;animation-delay:-12s;opacity:.35}
-.aurora{position:fixed;inset:-40%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(139,92,246,.10) 60deg,transparent 130deg,rgba(34,211,238,.10) 220deg,transparent 300deg);animation:spin 40s linear infinite;z-index:-1;pointer-events:none}
+.aurora{position:fixed;inset:-40%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(165,200,255,.08) 60deg,transparent 130deg,rgba(103,232,249,.09) 220deg,transparent 300deg);animation:spin 40s linear infinite;z-index:-1;pointer-events:none}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.15)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cursor{position:fixed;width:18px;height:18px;border-radius:50%;border:2px solid var(--cyan);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s;mix-blend-mode:screen}
