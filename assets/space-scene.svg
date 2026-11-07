@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A night sky with the constellation JW and a ringed planet">
-  <title>JW constellation over a ringed planet</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A night sky over a ringed planet">
+  <title>Night sky over a ringed planet</title>
 
   <defs>
     <!-- deep space wash -->
     <linearGradient id="sky" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0"    stop-color="#03040f"/>
-      <stop offset="0.30" stop-color="#05081a"/>
-      <stop offset="0.58" stop-color="#0a0a26"/>
-      <stop offset="0.80" stop-color="#0c0a2b"/>
-      <stop offset="1"    stop-color="#04050e"/>
+      <stop offset="0"    stop-color="#02030a"/>
+      <stop offset="0.30" stop-color="#04061a"/>
+      <stop offset="0.58" stop-color="#070726"/>
+      <stop offset="0.80" stop-color="#0a0820"/>
+      <stop offset="1"    stop-color="#02030a"/>
     </linearGradient>
 
     <!-- nebula clouds -->
@@ -144,73 +144,6 @@
         <ellipse rx="216" ry="50" fill="none" stroke="#e9d5ff" stroke-width="1.9" opacity="0.44"/>
       </g>
     </g>
-  </g>
-
-  <!-- ===================== CONSTELLATION: J W ===================== -->
-  <g>
-    <!-- connecting lines, drawn on with a dash animation -->
-    <polyline
-      points="250,150 250,177 250,204 250,231 250,258 250,279 241,294 226,300 211,295.5 202,282"
-      fill="none" stroke="#22d3ee" stroke-width="1.1" opacity="0.5"
-      stroke-dasharray="240" stroke-dashoffset="240">
-      <animate attributeName="stroke-dashoffset" from="240" to="0"
-               dur="2.6s" begin="0.6s" fill="freeze"/>
-    </polyline>
-
-    <polyline
-      points="450,150 469.5,300 489,195 508.5,300 528,150"
-      fill="none" stroke="#22d3ee" stroke-width="1.1" opacity="0.5"
-      stroke-dasharray="300" stroke-dashoffset="300">
-      <animate attributeName="stroke-dashoffset" from="300" to="0"
-               dur="2.4s" begin="2.2s" fill="freeze"/>
-    </polyline>
-
-    <!-- J stars -->
-    <g>
-      <circle cx="250" cy="150" r="9" fill="url(#cstar)"><animate attributeName="r" values="7;11;7" dur="3.4s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="150" r="2.6" fill="#e0feff"/>
-      <circle cx="250" cy="177" r="6" fill="url(#cstar)" opacity="0.9"><animate attributeName="r" values="4.5;7;4.5" dur="2.8s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="177" r="2"   fill="#e0feff"/>
-      <circle cx="250" cy="204" r="7" fill="url(#cstar)"><animate attributeName="r" values="5.5;8.5;5.5" dur="3.9s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="204" r="2.3" fill="#e0feff"/>
-      <circle cx="250" cy="231" r="6" fill="url(#cstar)" opacity="0.9"><animate attributeName="r" values="4.5;7;4.5" dur="3.1s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="231" r="2"   fill="#e0feff"/>
-      <circle cx="250" cy="258" r="7" fill="url(#cstar)"><animate attributeName="r" values="5.5;8.5;5.5" dur="4.2s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="258" r="2.3" fill="#e0feff"/>
-      <circle cx="250" cy="279" r="6" fill="url(#cstar)" opacity="0.9"><animate attributeName="r" values="4.5;7;4.5" dur="2.6s" repeatCount="indefinite"/></circle>
-      <circle cx="250" cy="279" r="2"   fill="#e0feff"/>
-      <circle cx="241" cy="294" r="7" fill="url(#cstar)"><animate attributeName="r" values="5.5;8.5;5.5" dur="3.6s" repeatCount="indefinite"/></circle>
-      <circle cx="241" cy="294" r="2.3" fill="#e0feff"/>
-      <circle cx="226" cy="300" r="10" fill="url(#cstar)"><animate attributeName="r" values="8;12;8" dur="4.8s" repeatCount="indefinite"/></circle>
-      <circle cx="226" cy="300" r="3"   fill="#ffffff"/>
-      <circle cx="211" cy="295.5" r="6" fill="url(#cstar)" opacity="0.9"><animate attributeName="r" values="4.5;7;4.5" dur="3.2s" repeatCount="indefinite"/></circle>
-      <circle cx="211" cy="295.5" r="2" fill="#e0feff"/>
-      <circle cx="202" cy="282" r="7" fill="url(#cstar)"><animate attributeName="r" values="5.5;8.5;5.5" dur="4.4s" repeatCount="indefinite"/></circle>
-      <circle cx="202" cy="282" r="2.3" fill="#e0feff"/>
-    </g>
-
-    <!-- W stars -->
-    <g>
-      <circle cx="450"   cy="150" r="9" fill="url(#cstar)"><animate attributeName="r" values="7;11;7" dur="3.8s" repeatCount="indefinite"/></circle>
-      <circle cx="450"   cy="150" r="2.6" fill="#e0feff"/>
-      <circle cx="469.5" cy="300" r="10" fill="url(#cstar)"><animate attributeName="r" values="8;12;8" dur="4.6s" repeatCount="indefinite"/></circle>
-      <circle cx="469.5" cy="300" r="3"   fill="#ffffff"/>
-      <circle cx="489"   cy="195" r="7" fill="url(#cstar)"><animate attributeName="r" values="5.5;8.5;5.5" dur="3.0s" repeatCount="indefinite"/></circle>
-      <circle cx="489"   cy="195" r="2.3" fill="#e0feff"/>
-      <circle cx="508.5" cy="300" r="10" fill="url(#cstar)"><animate attributeName="r" values="8;12;8" dur="5.0s" repeatCount="indefinite"/></circle>
-      <circle cx="508.5" cy="300" r="3"   fill="#ffffff"/>
-      <circle cx="528"   cy="150" r="9" fill="url(#cstar)"><animate attributeName="r" values="7;11;7" dur="3.5s" repeatCount="indefinite"/></circle>
-      <circle cx="528"   cy="150" r="2.6" fill="#e0feff"/>
-    </g>
-
-    <!-- travelling spark that walks the constellation -->
-    <circle r="3.4" fill="#a5f3fc" filter="url(#twinkleBlur)">
-      <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"
-        path="M250,150 L250,177 L250,204 L250,231 L250,258 L250,279 L241,294 L226,300 L211,295.5 L202,282
-              M450,150 L469.5,300 L489,195 L508.5,300 L528,150"/>
-      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.88;1"
-               dur="9s" repeatCount="indefinite"/>
-    </circle>
   </g>
 
   <!-- ===================== SATELLITE ===================== -->
