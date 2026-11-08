@@ -5,6 +5,10 @@
 --shadow:0 20px 60px rgba(0,0,0,.55);
 --radius:20px;--font:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
 --card-bg:#0a1120;--card-text:#cdd6ec;
+--glow-a:rgba(56,110,224,.16);--glow-b:rgba(103,232,249,.10);--glow-c:rgba(99,102,241,.11);
+--sky-0:#01030a;--sky-1:#030814;--sky-2:#050e22;--sky-3:#070a1a;--sky-4:#01030a;
+--grid:rgba(165,200,255,.04);
+--aur-a:rgba(165,200,255,.08);--aur-b:rgba(103,232,249,.09);
 }
 body{letter-spacing:-.01em}
 h1{font-weight:700}
@@ -23,13 +27,13 @@ h1 .h-line{display:block;margin:0}
 .chips li,.chips span{font-weight:600}
 footer{color:var(--muted)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-[data-theme="neon"]{--bg:#030810;--bg2:#071224;--purple:#22d3ee;--cyan:#e879f9;--orange:#facc15;--grad:linear-gradient(90deg,#22d3ee,#e879f9,#facc15)}
-[data-theme="sunset"]{--bg:#14060a;--bg2:#2a0a12;--purple:#fb923c;--cyan:#fde68a;--orange:#f43f5e;--grad:linear-gradient(90deg,#fb923c,#f43f5e,#8b5cf6)}
-[data-theme="ocean"]{--bg:#031018;--bg2:#062633;--panel:rgba(255,255,255,.06);--text:#ecfeff;--muted:#a5d8dd;--purple:#2dd4bf;--cyan:#22d3ee;--orange:#fbbf24;--grad:linear-gradient(90deg,#2dd4bf,#22d3ee,#fbbf24)}
-[data-theme="forest"]{--bg:#06120a;--bg2:#0b2413;--panel:rgba(255,255,255,.06);--text:#f0fdf4;--muted:#bbd5c3;--purple:#4ade80;--cyan:#a3e635;--orange:#fbbf24;--grad:linear-gradient(90deg,#4ade80,#a3e635,#fbbf24)}
-[data-theme="crimson"]{--bg:#0f0204;--bg2:#26060b;--panel:rgba(255,255,255,.06);--text:#fff1f2;--muted:#e7b8bb;--purple:#f43f5e;--cyan:#e879f9;--orange:#fb923c;--grad:linear-gradient(90deg,#f43f5e,#e879f9,#fb923c)}
-[data-theme="arctic"]{--bg:#060a14;--bg2:#0b1626;--panel:rgba(255,255,255,.06);--text:#ffffff;--muted:#cbd5e1;--purple:#67e8f9;--cyan:#e0f2fe;--orange:#fcd34d;--grad:linear-gradient(90deg,#67e8f9,#e0f2fe,#fcd34d)}
-[data-theme="golden"]{--bg:#140a02;--bg2:#2b1603;--panel:rgba(255,255,255,.06);--text:#fffbeb;--muted:#e7d3b3;--purple:#f59e0b;--cyan:#fcd34d;--orange:#fb923c;--grad:linear-gradient(90deg,#f59e0b,#fcd34d,#fb923c)}
+[data-theme="neon"]{--bg:#030810;--bg2:#071224;--purple:#22d3ee;--cyan:#e879f9;--orange:#facc15;--grad:linear-gradient(90deg,#22d3ee,#e879f9,#facc15);--glow-a:rgba(34,211,238,.25);--glow-b:rgba(232,121,249,.18);--glow-c:rgba(250,204,21,.12);--sky-0:#01060c;--sky-1:#020d18;--sky-2:#04121f;--sky-3:#030e19;--sky-4:#01060c;--grid:rgba(34,211,238,.045);--aur-a:rgba(34,211,238,.10);--aur-b:rgba(232,121,249,.10)}
+[data-theme="sunset"]{--bg:#14060a;--bg2:#2a0a12;--purple:#fb923c;--cyan:#fde68a;--orange:#f43f5e;--grad:linear-gradient(90deg,#fb923c,#f43f5e,#8b5cf6);--glow-a:rgba(251,146,60,.22);--glow-b:rgba(244,63,94,.16);--glow-c:rgba(139,92,246,.14);--sky-0:#100404;--sky-1:#1a060c;--sky-2:#200a16;--sky-3:#15060e;--sky-4:#100404;--grid:rgba(251,146,60,.05);--aur-a:rgba(251,146,60,.10);--aur-b:rgba(244,63,94,.10)}
+[data-theme="ocean"]{--bg:#031018;--bg2:#062633;--panel:rgba(255,255,255,.06);--text:#ecfeff;--muted:#a5d8dd;--purple:#2dd4bf;--cyan:#22d3ee;--orange:#fbbf24;--grad:linear-gradient(90deg,#2dd4bf,#22d3ee,#fbbf24);--glow-a:rgba(45,212,191,.20);--glow-b:rgba(34,211,238,.14);--glow-c:rgba(251,191,36,.10);--sky-0:#020b0e;--sky-1:#03121a;--sky-2:#052030;--sky-3:#031520;--sky-4:#020b0e;--grid:rgba(45,212,191,.045);--aur-a:rgba(45,212,191,.10);--aur-b:rgba(34,211,238,.10)}
+[data-theme="forest"]{--bg:#06120a;--bg2:#0b2413;--panel:rgba(255,255,255,.06);--text:#f0fdf4;--muted:#bbd5c3;--purple:#4ade80;--cyan:#a3e635;--orange:#fbbf24;--grad:linear-gradient(90deg,#4ade80,#a3e635,#fbbf24);--glow-a:rgba(74,222,128,.18);--glow-b:rgba(163,230,53,.13);--glow-c:rgba(251,191,36,.09);--sky-0:#030c05;--sky-1:#04150a;--sky-2:#07210f;--sky-3:#051a0c;--sky-4:#030c05;--grid:rgba(74,222,128,.045);--aur-a:rgba(74,222,128,.09);--aur-b:rgba(163,230,53,.09)}
+[data-theme="crimson"]{--bg:#0f0204;--bg2:#26060b;--panel:rgba(255,255,255,.06);--text:#fff1f2;--muted:#e7b8bb;--purple:#f43f5e;--cyan:#e879f9;--orange:#fb923c;--grad:linear-gradient(90deg,#f43f5e,#e879f9,#fb923c);--glow-a:rgba(244,63,94,.22);--glow-b:rgba(232,121,249,.14);--glow-c:rgba(251,146,60,.12);--sky-0:#0a0204;--sky-1:#150409;--sky-2:#1e060d;--sky-3:#12040a;--sky-4:#0a0204;--grid:rgba(244,63,94,.045);--aur-a:rgba(244,63,94,.10);--aur-b:rgba(232,121,249,.09)}
+[data-theme="arctic"]{--bg:#060a14;--bg2:#0b1626;--panel:rgba(255,255,255,.06);--text:#ffffff;--muted:#cbd5e1;--purple:#67e8f9;--cyan:#e0f2fe;--orange:#fcd34d;--grad:linear-gradient(90deg,#67e8f9,#e0f2fe,#fcd34d);--glow-a:rgba(103,232,249,.18);--glow-b:rgba(224,242,254,.12);--glow-c:rgba(252,211,77,.09);--sky-0:#03070e;--sky-1:#050d18;--sky-2:#081322;--sky-3:#050e1c;--sky-4:#03070e;--grid:rgba(103,232,249,.05);--aur-a:rgba(103,232,249,.10);--aur-b:rgba(224,242,254,.10)}
+[data-theme="golden"]{--bg:#140a02;--bg2:#2b1603;--panel:rgba(255,255,255,.06);--text:#fffbeb;--muted:#e7d3b3;--purple:#f59e0b;--cyan:#fcd34d;--orange:#fb923c;--grad:linear-gradient(90deg,#f59e0b,#fcd34d,#fb923c);--glow-a:rgba(245,158,11,.20);--glow-b:rgba(252,211,77,.14);--glow-c:rgba(251,146,60,.13);--sky-0:#0b0500;--sky-1:#150a02;--sky-2:#1e1104;--sky-3:#140c03;--sky-4:#0b0500;--grid:rgba(245,158,11,.05);--aur-a:rgba(245,158,11,.10);--aur-b:rgba(252,211,77,.09)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
 body{background:transparent;color:var(--text);font-family:var(--font);overflow-x:hidden;min-height:100vh;position:relative}
@@ -40,23 +44,23 @@ body{background:transparent;color:var(--text);font-family:var(--font);overflow-x
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:-4;
   background:
-    radial-gradient(ellipse at 20% 8%,rgba(56,110,224,.16),transparent 55%),
-    radial-gradient(ellipse at 82% 20%,rgba(103,232,249,.10),transparent 52%),
-    radial-gradient(ellipse at 60% 92%,rgba(99,102,241,.11),transparent 60%),
+    radial-gradient(ellipse at 20% 8%,var(--glow-a),transparent 55%),
+    radial-gradient(ellipse at 82% 20%,var(--glow-b),transparent 52%),
+    radial-gradient(ellipse at 60% 92%,var(--glow-c),transparent 60%),
     linear-gradient(180deg,
-      #01030a 0%,
-      #030814 26%,
-      #050e22 48%,
-      #070a1a 70%,
-      #01030a 100%);
+      var(--sky-0) 0%,
+      var(--sky-1) 26%,
+      var(--sky-2) 48%,
+      var(--sky-3) 70%,
+      var(--sky-4) 100%);
 }
 
 /* subtle grid, matching the reference's faint lines */
 .space-grid{
   position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    linear-gradient(rgba(165,200,255,.04) 1px,transparent 1px) 0 0/72px 72px,
-    linear-gradient(90deg,rgba(165,200,255,.04) 1px,transparent 1px) 0 0/72px 72px;
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/72px 72px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/72px 72px;
   mask-image:linear-gradient(180deg,black,black 65%,transparent);
 }
 
@@ -76,7 +80,7 @@ body::after{content:none}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
 .nebula.n2{width:420px;height:420px;background:var(--cyan);top:25%;right:-140px;animation-delay:-6s}
 .nebula.n3{width:380px;height:380px;background:var(--orange);bottom:-120px;left:30%;animation-delay:-12s;opacity:.35}
-.aurora{position:fixed;inset:-40%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(165,200,255,.08) 60deg,transparent 130deg,rgba(103,232,249,.09) 220deg,transparent 300deg);animation:spin 40s linear infinite;z-index:-1;pointer-events:none}
+.aurora{position:fixed;inset:-40%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,var(--aur-a) 60deg,transparent 130deg,var(--aur-b) 220deg,transparent 300deg);animation:spin 40s linear infinite;z-index:-1;pointer-events:none}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.15)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cursor{position:fixed;width:18px;height:18px;border-radius:50%;border:2px solid var(--cyan);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s;mix-blend-mode:screen}
