@@ -1,12 +1,12 @@
 :root{
---bg:#020409;--bg2:#060d1b;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.09);
---text:#eef2ff;--muted:#8a96b8;--purple:#a5c8ff;--cyan:#67e8f9;--orange:#f6c177;--pink:#d9c7ff;
+--bg:#000000;--bg2:#03070f;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.08);
+--text:#e8ecf7;--muted:#8590b0;--purple:#a5c8ff;--cyan:#67e8f9;--orange:#f6c177;--pink:#d9c7ff;
 --grad:linear-gradient(90deg,#a5c8ff,#eef3ff 55%,#f6c177);
 --shadow:0 20px 60px rgba(0,0,0,.55);
 --radius:20px;--font:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
---card-bg:#0a1120;--card-text:#cdd6ec;
---glow-a:rgba(56,110,224,.16);--glow-b:rgba(103,232,249,.10);--glow-c:rgba(99,102,241,.11);
---sky-0:#01030a;--sky-1:#030814;--sky-2:#050e22;--sky-3:#070a1a;--sky-4:#01030a;
+--card-bg:#070b18;--card-text:#c4cde3;
+--glow-a:rgba(56,110,224,.10);--glow-b:rgba(103,232,249,.07);--glow-c:rgba(99,102,241,.08);
+--sky-0:#000000;--sky-1:#010307;--sky-2:#020716;--sky-3:#030814;--sky-4:#000000;
 --grid:rgba(165,200,255,.04);
 --aur-a:rgba(165,200,255,.08);--aur-b:rgba(103,232,249,.09);
 }
@@ -76,7 +76,7 @@ body::after{content:none}
 /* --- 4 · GRID / BLUEPRINT (technical, matches the terminal vibe) -------- */
 
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.95}
-.nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-5;opacity:.42;animation:drift 22s ease-in-out infinite alternate}
+.nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-5;opacity:.28;animation:drift 22s ease-in-out infinite alternate}
 .nebula.n1{width:520px;height:520px;background:var(--purple);top:-140px;left:-120px}
 .nebula.n2{width:420px;height:420px;background:var(--cyan);top:25%;right:-140px;animation-delay:-6s}
 .nebula.n3{width:380px;height:380px;background:var(--orange);bottom:-120px;left:30%;animation-delay:-12s;opacity:.35}
