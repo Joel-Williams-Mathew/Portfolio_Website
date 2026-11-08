@@ -5,8 +5,8 @@
 --shadow:0 20px 60px rgba(0,0,0,.55);
 --radius:20px;--font:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
 --card-bg:#070b18;--card-text:#c4cde3;
---glow-a:rgba(56,110,224,.10);--glow-b:rgba(103,232,249,.07);--glow-c:rgba(99,102,241,.08);
---sky-0:#000000;--sky-1:#010307;--sky-2:#020716;--sky-3:#030814;--sky-4:#000000;
+--glow-a:rgba(150,160,185,.07);--glow-b:rgba(170,180,205,.05);--glow-c:rgba(150,160,185,.06);
+--sky-0:#000000;--sky-1:#000000;--sky-2:#020202;--sky-3:#020202;--sky-4:#000000;
 --grid:rgba(165,200,255,.04);
 --aur-a:rgba(165,200,255,.08);--aur-b:rgba(103,232,249,.09);
 }
