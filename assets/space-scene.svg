@@ -13,15 +13,15 @@
 
     <!-- nebula clouds -->
     <radialGradient id="neb1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#7c3aed" stop-opacity="0.30"/>
+      <stop offset="0" stop-color="#7c3aed" stop-opacity="0.11"/>
       <stop offset="1" stop-color="#7c3aed" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="neb2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.24"/>
+      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.09"/>
       <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="neb3" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#db2777" stop-opacity="0.18"/>
+      <stop offset="0" stop-color="#db2777" stop-opacity="0.06"/>
       <stop offset="1" stop-color="#db2777" stop-opacity="0"/>
     </radialGradient>
 
