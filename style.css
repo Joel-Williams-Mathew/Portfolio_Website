@@ -426,3 +426,27 @@ h1{font-weight:900}
   .mh-rules{font-size:8.5px;letter-spacing:.12em}
   .mh-name{font-size:15vw}
 }
+
+/* STAGE 2 - newsroom rules, byline, in-brief sidebar, halftone portrait */
+.section{border-top:1px solid var(--line)}
+.byline{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);margin:16px 0 2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 2px}
+.byline strong{color:var(--orange);font-weight:700}
+
+.in-brief{padding:0 6vw 26px;border-top:1px solid var(--line)}
+.in-brief-box{max-width:1240px;margin:0 auto;border-top:2px solid var(--text);border-bottom:2px solid var(--text);padding:16px 4px 18px}
+.in-brief-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--orange);margin:0 0 14px}
+.in-brief-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 30px}
+.in-brief-grid p{display:flex;align-items:baseline;gap:16px;border-bottom:1px dashed var(--line);padding:8px 2px}
+.in-brief-grid strong{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cyan);min-width:54px}
+.in-brief-grid span{font-size:14px;color:var(--text);line-height:1.5}
+
+.continued{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--muted);text-align:right;margin:18px 4px 0}
+.continued span{color:var(--orange)}
+
+.avatar-wrap.portrait img{filter:grayscale(1) contrast(1.15) sepia(.3) hue-rotate(-12deg) brightness(.95)}
+.avatar-wrap.portrait::after{content:"";position:absolute;inset:0;border-radius:28px;pointer-events:none;background-image:radial-gradient(circle,rgba(0,0,0,.5) 1px,transparent 1.45px);background-size:4px 4px;mix-blend-mode:multiply;opacity:.45;z-index:3}
+
+@media(max-width:900px){
+  .in-brief-grid{grid-template-columns:1fr}
+  .byline{font-size:10.5px}
+}
