@@ -212,11 +212,12 @@ h1 .h-line{margin:0}
 .hero-right{display:flex;flex-direction:column;align-items:center;gap:14px;max-height:100%;min-height:0}
 .avatar-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1;transition:transform .25s ease}
 .avatar-wrap.portrait{aspect-ratio:4/5;width:min(420px,84vw,38vh);border-radius:28px}
-.avatar-wrap.portrait img{border-radius:28px;object-position:center 18%}
+.avatar-wrap.portrait img{border-radius:28px;object-position:center 18%;animation:kenburns 18s ease-in-out infinite alternate;will-change:transform}
 .avatar-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(139,92,246,.35);position:relative;z-index:2;display:block}
 .ring{position:absolute;inset:-16px;border-radius:50%;border:1px dashed rgba(255,255,255,.25);animation:spin 26s linear infinite;z-index:1}
 .ring.r2{inset:-38px;border-color:rgba(34,211,238,.2);animation-duration:40s;animation-direction:reverse}
 .avatar-wrap.portrait .ring{border-radius:36px;border-style:solid;border-color:rgba(255,255,255,.14)}
+@keyframes kenburns{0%{transform:scale(1.02) translate(0,0)}50%{transform:scale(1.09) translate(-2.5%,-3.5%)}100%{transform:scale(1.04) translate(2%,2%)}}
 .avatar-wrap.portrait .ring.r2{border-color:rgba(34,211,238,.22)}
 .float-card{position:absolute;z-index:3;background:rgba(10,6,30,.75);backdrop-filter:blur(10px);border:1px solid var(--line);padding:10px 14px;border-radius:14px;font-size:13px;font-weight:700;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
 .fc1{top:8%;left:-8%}.fc2{bottom:16%;right:-10%;animation-delay:-1.5s}.fc3{bottom:-4%;left:6%;animation-delay:-3s}
@@ -381,3 +382,22 @@ footer a{color:var(--text);text-decoration:none}
 #liveStats{margin-top:4px}
 #liveStats strong{color:#4ade80}
 #liveStats small{letter-spacing:.04em}
+
+/* FILM GRAIN + VIGNETTE - cinematic overlay (above content, below cursor) */
+.grain{position:fixed;inset:-120px;z-index:400;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");background-size:240px 240px;animation:grainDrift 1.4s steps(6) infinite}
+@keyframes grainDrift{0%{transform:translate(0,0)}20%{transform:translate(-18px,8px)}40%{transform:translate(12px,-14px)}60%{transform:translate(-8px,-6px)}80%{transform:translate(16px,10px)}100%{transform:translate(0,0)}}
+.vignette{position:fixed;inset:0;z-index:399;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 52%,rgba(0,0,0,.42) 100%)}
+
+/* CINEMATIC VOL. I - the secret signature theme: pure black, amber, letterbox */
+[data-theme="vol1"]{
+  --bg:#000000;--bg2:#070401;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.10);
+  --text:#f5efe0;--muted:#a89c7d;--purple:#f6c177;--cyan:#ffb454;--orange:#fb923c;--pink:#e879f9;
+  --grad:linear-gradient(90deg,#f6c177,#fde68a,#fb923c);
+  --shadow:0 24px 80px rgba(0,0,0,.65);
+  --card-bg:#0d0903;--card-text:#e7d9b6;
+  --glow-a:rgba(251,146,60,.14);--glow-b:rgba(246,193,119,.09);--glow-c:rgba(251,191,36,.10);
+  --sky-0:#000000;--sky-1:#040201;--sky-2:#070402;--sky-3:#050301;--sky-4:#000000;
+  --grid:rgba(246,193,119,.05);
+  --aur-a:rgba(246,193,119,.10);--aur-b:rgba(251,146,60,.09);
+}
+[data-theme="vol1"] body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:150;box-shadow:inset 0 24px 0 #000,inset 0 -24px 0 #000}
