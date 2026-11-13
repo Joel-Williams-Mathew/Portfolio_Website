@@ -461,11 +461,11 @@ h1{font-weight:900}
 .dropcap::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:2.3em;line-height:.78;float:left;padding:.32em .22em 0 0;color:var(--orange)}
 
 /* STAGE 4 - IN THIS EDITION index + editorial pull-quote */
-.edition-toc{max-width:1240px;margin:0 auto 18px;padding:9px 6vw;border-bottom:1px solid var(--line);display:flex;gap:26px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.edition-toc{max-width:1240px;margin:0 auto 14px;padding:8px 5vw;border-bottom:1px solid var(--line);display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;justify-content:center}
 .edition-toc::-webkit-scrollbar{display:none}
-.toi-title{font-family:var(--mono);font-size:9.5px;letter-spacing:.38em;color:var(--orange)}
-.toi-list{display:flex;list-style:none;align-items:center}
-.toi-list a{color:var(--text);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.14em;border-right:1px solid var(--line);padding:7px 16px;transition:color .25s}
+.toi-title{font-family:var(--mono);font-size:9px;letter-spacing:.28em;color:var(--orange)}
+.toi-list{display:flex;list-style:none;align-items:center;flex-wrap:wrap}
+.toi-list a{color:var(--text);text-decoration:none;font-family:var(--mono);font-size:9px;letter-spacing:.12em;border-right:1px solid var(--line);padding:6px 12px;transition:color .25s}
 .toi-list li:last-child a{border-right:0}
 .toi-list a em{font-style:normal;color:var(--muted);margin-right:7px}
 .toi-list a:hover,.toi-list a:focus-visible{color:var(--orange)}
