@@ -67,13 +67,13 @@ body::before{
 body::after{content:none}
 
 
-/* --- 1 · CINEMATIC (the photo, faded out on scroll) --------------------- */
+/* --- 1 Â· CINEMATIC (the photo, faded out on scroll) --------------------- */
 
-/* --- 2 · MESH GRADIENT (pure CSS, no image, always crisp) --------------- */
+/* --- 2 Â· MESH GRADIENT (pure CSS, no image, always crisp) --------------- */
 
-/* --- 3 · NEBULA (photo, but held soft and dark like deep space) --------- */
+/* --- 3 Â· NEBULA (photo, but held soft and dark like deep space) --------- */
 
-/* --- 4 · GRID / BLUEPRINT (technical, matches the terminal vibe) -------- */
+/* --- 4 Â· GRID / BLUEPRINT (technical, matches the terminal vibe) -------- */
 
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.95}
 .nebula{position:fixed;border-radius:50%;filter:blur(90px);z-index:-5;opacity:.28;animation:drift 22s ease-in-out infinite alternate}
@@ -143,7 +143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .gal-item{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;aspect-ratio:4/3;background:#0a0620}
 .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
-.gal-item::after{content:"View ⤢";position:absolute;right:12px;bottom:12px;background:rgba(5,2,15,.68);backdrop-filter:blur(6px);border:1px solid var(--line);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:7px 11px;border-radius:999px;opacity:0;transform:translateY(8px);transition:.35s}
+.gal-item::after{content:"View â¤¢";position:absolute;right:12px;bottom:12px;background:rgba(5,2,15,.68);backdrop-filter:blur(6px);border:1px solid var(--line);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:7px 11px;border-radius:999px;opacity:0;transform:translateY(8px);transition:.35s}
 .gal-item:hover{border-color:rgba(34,211,238,.55);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .gal-item:hover img{transform:scale(1.07)}
 .gal-item:hover::after{opacity:1;transform:none}
@@ -161,7 +161,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .testi-head h3 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .testi-grid blockquote{padding:24px;position:relative}
-.testi-grid blockquote::before{content:"“";position:absolute;top:-6px;right:18px;font-family:var(--display);font-size:72px;color:rgba(255,255,255,.08)}
+.testi-grid blockquote::before{content:"â€œ";position:absolute;top:-6px;right:18px;font-family:var(--display);font-size:72px;color:rgba(255,255,255,.08)}
 .testi-grid p{color:var(--text);line-height:1.65;font-size:15px}
 .testi-grid footer{margin-top:16px;color:var(--muted);font-size:13px}
 .testi-grid footer strong{color:var(--cyan)}
@@ -297,7 +297,7 @@ footer a{color:var(--text);text-decoration:none}
 .spot-media{position:relative;min-height:340px;background:#0a0620;border-right:1px solid rgba(255,255,255,.12)}
 .spot-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 .spot-media.empty img{display:none}
-.spot-media.empty::after{content:"Image missing — check assets/linkedin/Post 5.png";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;padding:24px;text-align:center}
+.spot-media.empty::after{content:"Image missing â€” check assets/linkedin/Post 5.png";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:13px;padding:24px;text-align:center}
 .spot-star{position:absolute;top:14px;left:14px;z-index:2;background:#fbbf24;color:#1a1000;font-weight:800;font-size:11px;letter-spacing:.08em;padding:7px 12px;border-radius:999px;box-shadow:0 8px 20px rgba(251,191,36,.4)}
 .spot-body{padding:30px;position:relative;z-index:2;background:#0f0b2b;text-shadow:0 1px 2px rgba(0,0,0,.8)}
 .spot-body h3{font-family:var(--display);font-size:26px;line-height:1.2;margin:12px 0 8px;color:#ffffff}
@@ -461,14 +461,8 @@ h1{font-weight:900}
 .dropcap::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:2.3em;line-height:.78;float:left;padding:.32em .22em 0 0;color:var(--orange)}
 
 /* STAGE 4 - IN THIS EDITION index + editorial pull-quote */
-.edition-toc{max-width:1240px;margin:0 auto 14px;padding:8px 5vw;border-bottom:1px solid var(--line);display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;justify-content:center}
-.edition-toc::-webkit-scrollbar{display:none}
-.toi-title{font-family:var(--mono);font-size:9px;letter-spacing:.28em;color:var(--orange)}
-.toi-list{display:flex;list-style:none;align-items:center;flex-wrap:wrap}
-.toi-list a{color:var(--text);text-decoration:none;font-family:var(--mono);font-size:9px;letter-spacing:.12em;border-right:1px solid var(--line);padding:6px 12px;transition:color .25s}
-.toi-list li:last-child a{border-right:0}
-.toi-list a em{font-style:normal;color:var(--muted);margin-right:7px}
-.toi-list a:hover,.toi-list a:focus-visible{color:var(--orange)}
-.toi-list a:hover em{color:var(--text)}
 .quote{margin-top:20px;padding:20px 24px 18px 34px;position:relative;background:rgba(251,146,60,.06);border-left:3px solid var(--orange);border-radius:2px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:16.5px;line-height:1.6;color:var(--text)}
 .quote::before{content:"\201C";position:absolute;left:9px;top:2px;font-size:46px;line-height:1;font-family:Georgia,serif;color:var(--orange);opacity:.9}
+
+/* STAGE 5 - colophon */
+.end-mark{text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--muted);padding:22px 6vw 4px;border-top:1px solid var(--line);margin-bottom:10px}
