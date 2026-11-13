@@ -459,3 +459,16 @@ h1{font-weight:900}
 .masthead{animation:inkIn .9s ease-out both}
 @keyframes inkIn{0%{opacity:0;filter:blur(5px);transform:translateY(-14px)}100%{opacity:1;filter:blur(0);transform:translateY(0)}}
 .dropcap::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:2.3em;line-height:.78;float:left;padding:.32em .22em 0 0;color:var(--orange)}
+
+/* STAGE 4 - IN THIS EDITION index + editorial pull-quote */
+.edition-toc{max-width:1240px;margin:0 auto 18px;padding:9px 6vw;border-bottom:1px solid var(--line);display:flex;gap:26px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.edition-toc::-webkit-scrollbar{display:none}
+.toi-title{font-family:var(--mono);font-size:9.5px;letter-spacing:.38em;color:var(--orange)}
+.toi-list{display:flex;list-style:none;align-items:center}
+.toi-list a{color:var(--text);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.14em;border-right:1px solid var(--line);padding:7px 16px;transition:color .25s}
+.toi-list li:last-child a{border-right:0}
+.toi-list a em{font-style:normal;color:var(--muted);margin-right:7px}
+.toi-list a:hover,.toi-list a:focus-visible{color:var(--orange)}
+.toi-list a:hover em{color:var(--text)}
+.quote{margin-top:20px;padding:20px 24px 18px 34px;position:relative;background:rgba(251,146,60,.06);border-left:3px solid var(--orange);border-radius:2px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:16.5px;line-height:1.6;color:var(--text)}
+.quote::before{content:"\201C";position:absolute;left:9px;top:2px;font-size:46px;line-height:1;font-family:Georgia,serif;color:var(--orange);opacity:.9}
