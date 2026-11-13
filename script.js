@@ -25,6 +25,10 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 e.target.querySelectorAll('[data-count]').forEach(el=>{const n=+el.dataset.count,dec=n%1!==0;let v=0;const step=dec?n/34:n/30;const iv=setInterval(()=>{v+=step;if(v>=n){v=n;clearInterval(iv)}el.textContent=dec?v.toFixed(1):Math.ceil(v)},40)});io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+// Stage 3: sections draw their amber press rule across on entry
+const ioSections=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ioSections.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.section').forEach(el=>ioSections.observe(el));
+
 // Cursor + trail + magnetic
 const cursor=document.getElementById('cursor');
 const trail=document.getElementById('trail');

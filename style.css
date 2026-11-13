@@ -415,7 +415,7 @@ h1{font-weight:900}
 .mh-tag{font-family:var(--mono);font-size:clamp(9px,1.35vw,12.5px);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px}
 .mh-date{display:inline-block;font-family:var(--mono);font-size:clamp(8.5px,1.1vw,10.5px);letter-spacing:.14em;color:var(--orange);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:5px 20px;margin-top:8px}
 
-.nasa-stamp{position:absolute;bottom:-12px;left:-34px;transform:rotate(-13deg);width:96px;height:96px;border-radius:50%;border:2px dashed rgba(246,193,119,.9);background:radial-gradient(circle,rgba(20,12,4,.7),rgba(20,12,4,.18) 72%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f6c177;text-align:center;line-height:1.3;box-shadow:0 0 22px rgba(246,193,119,.25),inset 0 0 14px rgba(246,193,119,.18);z-index:6;animation:stampPulse 3.6s ease-in-out infinite}
+.nasa-stamp{position:absolute;bottom:-12px;left:-34px;transform:rotate(-13deg);width:96px;height:96px;border-radius:50%;border:2px dashed rgba(246,193,119,.9);background:radial-gradient(circle,rgba(20,12,4,.7),rgba(20,12,4,.18) 72%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f6c177;text-align:center;line-height:1.3;box-shadow:0 0 22px rgba(246,193,119,.25),inset 0 0 14px rgba(246,193,119,.18);z-index:6;animation:stampIn .9s cubic-bezier(.2,1.3,.3,1) .4s both,stampPulse 3.6s ease-in-out 1.4s infinite}
 .nasa-stamp span{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.22em}
 .nasa-stamp small{font-family:var(--mono);font-size:6.4px;letter-spacing:.22em;color:#ffd8a0}
 @keyframes stampPulse{0%,100%{box-shadow:0 0 16px rgba(246,193,119,.22),inset 0 0 14px rgba(246,193,119,.16)}50%{box-shadow:0 0 36px rgba(246,193,119,.42),inset 0 0 18px rgba(246,193,119,.3)}}
@@ -450,3 +450,12 @@ h1{font-weight:900}
   .in-brief-grid{grid-template-columns:1fr}
   .byline{font-size:10.5px}
 }
+
+/* STAGE 3 - newsroom press animations: sections print their rule, stamp slams in, ink-in masthead, drop cap */
+.section{position:relative}
+.section::after{content:"";position:absolute;top:-1px;left:0;height:2px;width:0;background:linear-gradient(90deg,rgba(251,146,60,.05),var(--orange) 18%,var(--orange) 50%,transparent 78%);box-shadow:0 0 10px rgba(251,146,60,.5);transition:width 1.5s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.section.in::after{width:100%}
+@keyframes stampIn{0%{transform:rotate(-13deg) scale(2.6);opacity:0}55%{transform:rotate(-13deg) scale(.82);opacity:1}80%{transform:rotate(-13deg) scale(1.14)}100%{transform:rotate(-13deg) scale(1)}}
+.masthead{animation:inkIn .9s ease-out both}
+@keyframes inkIn{0%{opacity:0;filter:blur(5px);transform:translateY(-14px)}100%{opacity:1;filter:blur(0);transform:translateY(0)}}
+.dropcap::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:2.3em;line-height:.78;float:left;padding:.32em .22em 0 0;color:var(--orange)}
