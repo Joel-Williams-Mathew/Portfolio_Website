@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="archive-b">
+<head>
+<noscript><style>.r{opacity:1 !important;transform:none !important}</style></noscript>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joel Williams Mathew — The Glass Dossier | AI/ML Developer</title>
+<meta name="description" content="Joel Williams Mathew — AI/ML Developer. The Glass Dossier. SJCET Palai. NASA Space Apps 2025." />
+<meta name="theme-color" content="#060708">
+<link rel="icon" href="assets/favicon.png?v=2" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060708;
+  --panel:#0E0F11;
+  --panel2:#15161a;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.18);
+  --ink:#F2F2F0;
+  --dim:rgba(242,242,240,.56);
+  --amber:#E2B15C;
+  --amber-soft:rgba(226,177,92,.14);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+  --disp:'Space Grotesk',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--amber);color:#060708}
+
+/* ambient glow */
+body::before{content:"";position:fixed;top:-20vh;left:30vw;width:70vmax;height:70vmax;background:radial-gradient(circle,rgba(226,177,92,.07),transparent 55%);pointer-events:none;z-index:0}
+body::after{content:"";position:fixed;bottom:-30vh;right:-15vw;width:60vmax;height:60vmax;background:radial-gradient(circle,rgba(226,177,92,.05),transparent 55%);pointer-events:none;z-index:0}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background:rgba(6,7,8,.55);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1360px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.brand{font-family:var(--mono);font-size:10.5px;letter-spacing:.32em;color:var(--ink);text-decoration:none}
+.brand b{color:var(--amber)}
+.nav-cta{font-family:var(--mono);font-size:9.5px;letter-spacing:.3em;color:var(--ink);text-decoration:none;padding:10px 18px;border:1px solid var(--line2);border-radius:999px;white-space:nowrap}
+.nav-cta:hover{border-color:var(--amber);color:var(--amber)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.04em;transition:color .25s}
+.nav-links a:hover{color:var(--ink)}
+
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:66% 24%;filter:grayscale(1) contrast(1.2) brightness(.58);opacity:.9}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--bg) 0%,rgba(6,7,8,.92) 35%,rgba(6,7,8,.35) 65%,rgba(6,7,8,.1) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 22%)}
+.hero-inner{position:relative;z-index:2;max-width:1360px;margin:0 auto;width:100%;padding:90px 28px 40px}
+.eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.4em;color:var(--amber);margin-bottom:24px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1.hero-title{font-family:var(--disp);font-weight:700;font-size:clamp(78px,10.4vw,148px);line-height:.88;letter-spacing:-.055em;max-width:1100px}
+h1.hero-title .l1{display:block;color:#fff}
+h1.hero-title .l2{display:block;color:#fff;-webkit-text-stroke:1px #fff;-webkit-text-fill-color:transparent}
+h1.hero-title .l3{display:block;color:var(--amber)}
+.sub{margin-top:28px;max-width:52ch;color:rgba(242,242,240,.82);font-size:16.5px;line-height:1.55}
+.sub b{color:#fff}
+.cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.cta{text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;padding:15px 26px;border-radius:8px;transition:all .3s}
+.cta.primary{background:var(--amber);color:#060708}
+.cta.primary:hover{transform:translateY(-2px);box-shadow:0 12px 44px rgba(226,177,92,.3)}
+.cta.ghost{border:1px solid var(--line2);color:var(--ink)}
+.cta.ghost:hover{border-color:var(--amber);color:var(--amber)}
+.strip{position:relative;z-index:2;max-width:1360px;margin:0 auto;width:100%;padding:0 28px 28px}
+.strip-inner{border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--dim);flex-wrap:wrap;gap:14px}
+.strip b{color:var(--ink)}
+
+/* sections */
+.section{padding:110px 28px;position:relative}
+.wrap{max-width:1360px;margin:0 auto;position:relative}
+.kicker{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:44px;font-family:var(--mono);font-size:9.5px;letter-spacing:.4em;color:var(--dim)}
+.kicker b{color:var(--amber);font-weight:500;letter-spacing:.3em}
+h2.section-title{font-family:var(--disp);font-weight:700;font-size:clamp(38px,5.4vw,72px);line-height:1;letter-spacing:-.035em;max-width:20ch;margin-bottom:60px}
+h2.section-title em{color:var(--amber);font-style:normal}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start}
+.about-copy p{font-size:17px;line-height:1.7;color:var(--dim);margin-bottom:20px;max-width:52ch}
+.about-copy strong{color:#fff}
+.facts{display:flex;flex-direction:column;gap:0}
+.fact{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line);padding:18px 0}
+.fact:last-child{border-bottom:0}
+.fact dt{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--dim);padding-top:3px}
+.fact dd{color:#fff;font-size:15px}
+
+/* work rows */
+.case{display:grid;grid-template-columns:64px 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--panel),var(--panel2));transition:transform .4s,border-color .4s}
+.case:hover{transform:translateY(-4px);border-color:rgba(226,177,92,.4)}
+.case-num{font-family:var(--disp);font-weight:700;font-size:44px;color:var(--amber);padding:28px 24px;border-right:1px solid var(--line)}
+.case-body{padding:28px 30px;display:flex;flex-direction:column;gap:14px}
+.case-tag{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--amber)}
+.case-title{font-family:var(--disp);font-weight:600;font-size:32px;line-height:1.05;letter-spacing:-.02em}
+.case-desc{color:var(--dim);font-size:14px;line-height:1.55}
+.case-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.case-tags span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);background:rgba(255,255,255,.04);border:1px solid var(--line);padding:6px 11px;border-radius:6px}
+.case-link{align-self:start;margin-top:auto;font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--amber);text-decoration:none}
+.case-art{border-left:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden;min-height:230px}
+.case-art span{font-family:var(--disp);font-weight:700;font-size:150px;color:rgba(226,177,92,.12)}
+.case-art::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(226,177,92,.12),transparent 55%)}
+.case + .case{margin-top:14px}
+
+/* experience */
+.exp{display:grid;grid-template-columns:170px 1fr;gap:56px;padding:36px 0;border-bottom:1px solid var(--line)}
+.exp:last-child{border-bottom:0}
+.exp-date{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--amber);padding-top:10px}
+.exp-role{font-family:var(--disp);font-weight:600;font-size:28px;letter-spacing:-.015em}
+.exp-org{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);margin-top:6px}
+.exp-body{margin-top:14px;color:var(--dim);line-height:1.6;font-size:14.5px;max-width:60ch}
+
+/* quote */
+.quote-block{margin:0 auto;max-width:900px;text-align:center;padding:80px 28px 60px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-mark{font-family:var(--disp);font-size:64px;color:var(--amber);line-height:.6;margin-bottom:26px}
+.quote-text{font-family:var(--disp);font-size:clamp(22px,3.4vw,36px);line-height:1.3;letter-spacing:-.02em}
+.quote-who{margin-top:24px;font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--dim)}
+
+/* contact */
+.contact-panel{position:relative;overflow:hidden;border-radius:24px;padding:70px 60px;background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid var(--line)}
+.contact-panel::before{content:"";position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(circle at 60% 40%,rgba(226,177,92,.18),transparent 60%)}
+.contact-inner{position:relative;z-index:1}
+.contact-big{font-family:var(--disp);font-weight:700;font-size:clamp(40px,6.4vw,80px);line-height:.92;letter-spacing:-.04em;max-width:16ch}
+.contact-big em{color:var(--amber);font-style:normal}
+.contact-btn{display:inline-flex;align-items:center;gap:10px;margin-top:34px;background:var(--amber);color:#060708;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.3em;padding:17px 28px;border-radius:8px}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:26px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;color:var(--dim)}
+.foot b{color:var(--ink)}
+
+@media (max-width:980px){
+  .nav-links{display:none}
+  .about{grid-template-columns:1fr;gap:40px}
+  .case{grid-template-columns:56px 1fr}
+  .case-art{display:none}
+  .exp{grid-template-columns:1fr;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">JOEL <b>·</b> DOSSIER</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:joelw2200@gmail.com">HIRE ME →</a>
+  </div>
+</header>
+
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="assets/hero-cinematic.jpg" alt="Joel Williams Mathew coding at a mountain overlook at sunrise"></div>
+  <div class="hero-inner">
+    <p class="eyebrow"><span class="dot"></span> OPEN TO AI/ML INTERNSHIPS</p>
+    <h1 class="hero-title">
+      <span class="l1">Think.</span>
+      <span class="l2">Build.</span>
+      <span class="l3">Repeat.</span>
+    </h1>
+    <p class="sub">I&rsquo;m <b>Joel Williams Mathew</b> — B.Tech AI &amp; Data Science student at SJCET Palai. I turn curiosity into working AI: exoplanet discovery, crop intelligence, agentic systems.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="#work">SEE THE WORK →</a>
+      <a class="cta ghost" href="mailto:joelw2200@gmail.com">Get in touch</a>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="strip-inner">
+      <span><b>01</b> REPOS</span>
+      <span><b>NASA</b> SPACE APPS &rsquo;25</span>
+      <span><b>1.4K</b> LINKEDIN</span>
+      <span><b>460+</b> CONTRIBUTIONS</span>
+      <span><b>SJCET</b> PALAI</span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="kicker"><b>01 / ABOUT</b><span>THE FILE</span></div>
+    <h2 class="section-title">Intelligence, <em>engineered.</em></h2>
+    <div class="about">
+      <div class="about-copy">
+        <p>Enthusiastic and driven B.Tech student in <strong>Artificial Intelligence and Data Science</strong> from Kozhikode, Kerala — passionate about building real-world solutions using AI, ML and prompt engineering.</p>
+        <p>Currently exploring <strong>Computer Vision</strong>, <strong>NLP</strong>, <strong>Prompt Engineering</strong> and intelligent applications with Python, OpenCV and MediaPipe.</p>
+        <p>From exoplanet discovery to real-time emotion detection — I turn complex problems into working AI.</p>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>NAME</dt><dd>Joel Williams Mathew</dd></div>
+        <div class="fact"><dt>ROLE</dt><dd>AI/ML Developer</dd></div>
+        <div class="fact"><dt>EDUCATION</dt><dd>B.Tech AI &amp; DS — SJCET Palai (2023–2027)</dd></div>
+        <div class="fact"><dt>EXPERIENCE</dt><dd>ML Intern — Cognifyz &amp; PaceLab, Kozhikode</dd></div>
+        <div class="fact"><dt>NOTABLE</dt><dd>NASA Space Apps 2025 Nominee · 2× Hackathon Finalist · 1st Prize Spectra 3.0</dd></div>
+        <div class="fact"><dt>NOW</dt><dd>Open to AI/ML internships — Kozhikode · remote</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="kicker"><b>02 / SELECTED WORK</b><span>FOUR BUILDS</span></div>
+    <h2 class="section-title">Work that <em>shipped.</em></h2>
+
+    <article class="case">
+      <div class="case-num">01</div>
+      <div class="case-body">
+        <p class="case-tag">NASA SPACE APPS</p>
+        <h3 class="case-title">A World Away</h3>
+        <p class="case-desc">Machine-learning pipeline to detect and characterize exoplanets from astronomical data — for NASA Space Apps 2025.</p>
+        <div class="case-tags"><span>PYTHON</span><span>ML</span><span>NASA SPACE APPS</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-art"><span>01</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">02</div>
+      <div class="case-body">
+        <p class="case-tag">AGTECH + VISION</p>
+        <h3 class="case-title">Plant Disease Intelligence</h3>
+        <p class="case-desc">CNN-based diagnosis identifying plant diseases from leaf imagery, served via a React interface.</p>
+        <div class="case-tags"><span>PYTHON</span><span>TENSORFLOW</span><span>CNN</span><span>REACT</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-art"><span>02</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">03</div>
+      <div class="case-body">
+        <p class="case-tag">LLM / AGENTIC</p>
+        <h3 class="case-title">RAG AI Agent</h3>
+        <p class="case-desc">A LangChain-powered agent that grounds LLM answers in your own knowledge base — embeddings, vectors and conversational reasoning.</p>
+        <div class="case-tags"><span>PYTHON</span><span>LLMs</span><span>LANGCHAIN</span><span>RAG</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-art"><span>03</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">04</div>
+      <div class="case-body">
+        <p class="case-tag">COMPUTER VISION</p>
+        <h3 class="case-title">Emotion Detection System</h3>
+        <p class="case-desc">Live webcam pipeline with OpenCV + CNN — frame processing, face tracking and classification at interactive speed.</p>
+        <div class="case-tags"><span>PYTHON</span><span>TENSORFLOW</span><span>CNN</span><span>OPENCV</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-art"><span>04</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="kicker"><b>03 / EXPERIENCE</b><span>FIELD NOTES</span></div>
+    <h2 class="section-title">One season of <em>shipping.</em></h2>
+    <div class="exp">
+      <div class="exp-date">OCT–DEC 2025</div>
+      <div>
+        <h3 class="exp-role">AI/ML Intern — PaceLab, Kozhikode</h3>
+        <p class="exp-org">INTERNSHIP · REAL ML IN THE WILD</p>
+        <p class="exp-body">Trained two ML models, completed a major and minor project, and connected with 28 other passionate minds under mentor Joel Basil Kurian. Where theory became shipped AI.</p>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-date">2025</div>
+      <div>
+        <h3 class="exp-role">NASA Space Apps 2025 — Global Nominee</h3>
+        <p class="exp-org">A WORLD AWAY · EXOPLANET DISCOVERY</p>
+        <p class="exp-body">Global Nominee in the international hackathon. Built the exoplanet-detection ML pipeline; full recognition on LinkedIn headline and NASA Space Apps roster.</p>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-date">2023–2027</div>
+      <div>
+        <h3 class="exp-role">B.Tech, AI &amp; Data Science — SJCET Palai</h3>
+        <p class="exp-org">UNDERGRADUATE · KERALA</p>
+        <p class="exp-body">Focused on intelligent systems, computer vision, NLP and prompt engineering — plus JoeBot, an RL agent for Call of Duty, and Kerala-relevant applied ML.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-block">
+  <div class="quote-mark">“</div>
+  <p class="quote-text">It was an amazing prototype..<br>Had a great time there.</p>
+  <p class="quote-who">AIBEL BIN ZACARIAH — ON YOUR FIRST INAUGRATION PROJECT</p>
+</div>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div class="contact-inner">
+        <p class="eyebrow"><span class="dot"></span> OPEN TO AI/ML INTERNSHIPS</p>
+        <h2 class="contact-big">Let&rsquo;s build<br><em>the next system.</em></h2>
+        <a class="contact-btn" href="mailto:joelw2200@gmail.com">joelw2200@gmail.com →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span><b>THE GLASS DOSSIER</b> · JOEL WILLIAMS MATHEW</span>
+  <span>KOZHIKODE · EST. 2024 · SJCET PALAI</span>
+</footer>
+
+</body>
+</html>
