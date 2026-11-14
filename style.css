@@ -466,3 +466,7 @@ h1{font-weight:900}
 
 /* STAGE 5 - colophon */
 .end-mark{text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--muted);padding:22px 6vw 4px;border-top:1px solid var(--line);margin-bottom:10px}
+
+/* STAGE 6 - front-page kicker above the badge */
+.front-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.42em;color:var(--muted);margin:0 0 6px;display:flex;align-items:center;gap:12px}
+.front-kicker::after{content:"";display:inline-block;width:56px;height:1px;background:var(--orange);opacity:.6}
