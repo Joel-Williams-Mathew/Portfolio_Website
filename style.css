@@ -530,3 +530,13 @@ h1{font-weight:900}
 .dossier-rows span{font-size:12.5px;color:var(--text);line-height:1.4}
 .dossier-foot{font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;color:var(--muted);margin:8px 0 0;text-align:right}
 @media(max-width:640px){.dossier-rows{grid-template-columns:1fr}.dossier-rows span{font-size:11.5px}}
+
+/* STAGE 10 - nameplate hero + ghost numerals */
+.nameplate{font-family:'Playfair Display',Georgia,serif;font-weight:900;line-height:.87;letter-spacing:-.045em;margin:6px 0 18px}
+.nl-line{display:block;font-size:clamp(64px,11.2vw,132px)}
+.nl-white{color:#f5f6fa}
+.nl-gold{background:linear-gradient(100deg,#ffb454 0%,#f6c177 18%,#fb923c 42%,#ffd69a 62%,#fb923c 80%,#ffb454 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5.5s linear infinite}
+.motto{font-family:var(--mono);font-size:10.5px;letter-spacing:.44em;color:var(--orange);margin:0 0 12px}
+.sec-head{position:relative}
+.sec-head .ghost{position:absolute;right:-24px;top:-46px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(96px,12vw,150px);line-height:1;color:rgba(255,255,255,.045);pointer-events:none;user-select:none}
+@media(max-width:640px){.sec-head .ghost{right:-6px;top:-36px;font-size:88px}}
