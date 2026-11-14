@@ -148,3 +148,9 @@ document.querySelectorAll('.li-filter').forEach(btn=>{
     })
     .catch(function(){ /* leave the dashes */ });
 })();
+
+
+// Stage 9: chapter marks - highlight the section you are reading
+const chaps=[...document.querySelectorAll('.chap')];
+const chapSecio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){chaps.forEach(c=>c.classList.toggle('on',c.dataset.ch===en.target.id))}}),{threshold:.35});
+['home','about','projects','experience','resume','beyond','journey','contact'].forEach(id=>{const el=document.getElementById(id);if(el)chapSecio.observe(el)});
