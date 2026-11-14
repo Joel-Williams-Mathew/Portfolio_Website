@@ -518,3 +518,15 @@ h1{font-weight:900}
 .chap:hover small,.chap.on small{max-width:200px;opacity:1;color:var(--orange)}
 .chap.on{color:var(--orange)}
 @media(max-width:1150px){.chapters{display:none}}
+
+/* COMBINED SHORT VERSION - one slim box, replaces IN BRIEF + CAST & CREW */
+.dossier{padding:2px 6vw 8px}
+.dossier-box{max-width:1100px;margin:0 auto;border-top:2px solid var(--text);border-bottom:1px solid var(--line);padding:10px 6px 12px}
+.dossier-kicker{font-family:var(--mono);font-size:8.5px;letter-spacing:.42em;color:var(--orange);margin:0 0 8px}
+.dossier-rows{display:grid;grid-template-columns:1.15fr .85fr;gap:2px 34px}
+.dossier-rows p{display:flex;gap:16px;align-items:baseline;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+.dossier-rows p:last-child{border-bottom:0}
+.dossier-rows strong{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--cyan);min-width:46px;flex-shrink:0}
+.dossier-rows span{font-size:12.5px;color:var(--text);line-height:1.4}
+.dossier-foot{font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;color:var(--muted);margin:8px 0 0;text-align:right}
+@media(max-width:640px){.dossier-rows{grid-template-columns:1fr}.dossier-rows span{font-size:11.5px}}
