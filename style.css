@@ -98,7 +98,7 @@ body::after{content:none}
 #trail{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .trail-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);transform:translate(-50%,-50%);transition:transform .35s,opacity .35s}
 .clock{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
-.status-chip{display:flex;width:fit-content;align-items:center;gap:8px;margin-top:28px;margin-bottom:0;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);color:#bbf7d0;padding:8px 14px;border-radius:999px;font-size:13px}
+.status-chip{display:flex;width:fit-content;align-items:center;gap:8px;margin-top:16px;margin-bottom:0;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);color:#bbf7d0;padding:8px 14px;border-radius:999px;font-size:13px}
 .status-chip i{width:8px;height:8px;background:#4ade80;border-radius:50%;box-shadow:0 0 10px #4ade80;animation:pulse 1.8s infinite}
 .shimmer{background:linear-gradient(100deg,var(--purple) 0%,var(--cyan) 25%,var(--orange) 50%,var(--pink,#e879f9) 75%,var(--purple) 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5s linear infinite}
 @keyframes shimmer{to{background-position:220% center}}
@@ -136,7 +136,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .theme-select option{background:#070310;color:#fff}
 .theme-btn:hover,.nav-cta:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(34,211,238,.35)}
 .burger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:82px 6vw 10px;position:relative;z-index:1;overflow:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:82px 6vw 10px;position:relative;z-index:1;overflow:visible}
 .hero-art{display:none}
 .hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hero-art-vignette{display:none}
@@ -197,9 +197,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 h1{font-family:var(--display);font-size:clamp(44px,7vw,84px);line-height:.98;letter-spacing:-.03em;margin:22px 0 16px}
 h1 .h-line{margin:0}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{font-size:19px;color:var(--text);margin-top:12px;display:block} .caret{color:var(--cyan);animation:blink 1s infinite}
+.sub{font-size:17px;color:var(--text);margin-top:10px;display:block} .caret{color:var(--cyan);animation:blink 1s infinite}
 @keyframes blink{50%{opacity:0}}
-.desc{color:var(--muted);line-height:1.55;max-width:520px;margin:10px 0 14px;font-size:15.5px}
+.desc{color:var(--muted);line-height:1.5;max-width:520px;margin:8px 0 12px;font-size:15px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .btn{padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:.3s;border:1px solid transparent}
 .btn.primary{background:var(--grad);color:#05020f;box-shadow:0 10px 30px rgba(139,92,246,.4)}
@@ -207,7 +207,7 @@ h1 .h-line{margin:0}
 .btn.ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.05)}
 .btn.ghost:hover{border-color:var(--cyan);transform:translateY(-2px)}
 .stats{display:flex;gap:30px;margin:16px 0 12px;flex-wrap:wrap}.stats div{display:flex;flex-direction:column}.stats strong{font-family:var(--display);font-size:28px}.stats small{color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}.socials a{padding:9px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);transition:.3s}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.socials a{padding:9px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);transition:.3s}
 .socials a:hover{color:#fff;border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,211,238,.25)}
 .hero-right{display:flex;flex-direction:column;align-items:center;gap:14px;max-height:100%;min-height:0}
 .avatar-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1;transition:transform .25s ease}
