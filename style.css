@@ -271,7 +271,7 @@ h1 .h-line{margin:0}
 .c-card small{color:var(--muted)} .c-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 14px 30px rgba(34,211,238,.2)}
 footer{padding:28px 6vw;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);color:var(--muted);font-size:14px;position:relative;z-index:1}
 footer a{color:var(--text);text-decoration:none}
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .quote{margin-top:18px;padding:14px 16px;border-left:3px solid var(--cyan);background:rgba(255,255,255,.05);border-radius:0 12px 12px 0;color:var(--muted);font-style:italic;font-size:14px;line-height:1.6}
 .exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}

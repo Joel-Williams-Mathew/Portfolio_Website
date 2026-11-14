@@ -1,3 +1,4 @@
+document.documentElement.classList.add("js")
 // Preloader
 const pre=document.getElementById('preloader'),preBar=document.getElementById('preBar'),preText=document.getElementById('preText');
 const preSteps=['loading universe_','warming nebula_','calibrating stars_','deploying intelligence_'];let pv=0;
