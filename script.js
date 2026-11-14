@@ -1,3 +1,4 @@
+document.documentElement.classList.add('reveal-ready')
 document.documentElement.classList.add("js")
 // Preloader
 const pre=document.getElementById('preloader'),preBar=document.getElementById('preBar'),preText=document.getElementById('preText');
