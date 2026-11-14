@@ -477,3 +477,24 @@ h1{font-weight:900}
   .hero-art::after{background:linear-gradient(180deg,rgba(4,7,12,.88) 0%,rgba(4,7,12,.60) 52%,rgba(4,7,12,.32) 100%)}
   .hero-art img{object-position:68% 22%}
 }
+
+/* STAGE 7 - cinematic title-card: viewfinder brackets, side notches, scroll cue */
+.vf{position:absolute;inset:14px;z-index:3;pointer-events:none}
+.vf-corner{position:absolute;width:22px;height:22px;border:0 solid rgba(255,255,255,.34)}
+.vf-corner.tl{top:0;left:0;border-top-width:1.5px;border-left-width:1.5px}
+.vf-corner.tr{top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
+.vf-corner.bl{bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
+.vf-corner.br{bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
+.vf-notch{position:absolute;top:50%;width:12px;height:42px;transform:translateY(-50%)}
+.vf-notch.l{left:0;border-top:1.5px solid rgba(255,255,255,.3);border-bottom:1.5px solid rgba(255,255,255,.3)}
+.vf-notch.r{right:0;border-top:1.5px solid rgba(255,255,255,.3);border-bottom:1.5px solid rgba(255,255,255,.3)}
+
+.scroll-cue{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.scroll-cue span{font-family:var(--mono);font-size:8px;letter-spacing:.45em;color:rgba(255,255,255,.42)}
+.cue-line{position:relative;width:1px;height:38px;background:rgba(255,255,255,.14);overflow:hidden}
+.cue-line i{position:absolute;top:-10px;left:0;width:1px;height:11px;background:var(--orange);box-shadow:0 0 6px rgba(251,146,60,.8);animation:cueDrop 2.1s ease-in-out infinite}
+@keyframes cueDrop{0%{top:-12px;opacity:0}28%{opacity:1}100%{top:112%;opacity:0}}
+@media(max-width:640px){
+  .vf{inset:9px}
+  .scroll-cue{display:none}
+}
