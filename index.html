@@ -27,6 +27,14 @@ html.reveal-ready .rx.rx-in{opacity:1;transform:none;filter:none}
 .btn.amber{animation:ctaPulse 3.6s ease-in-out infinite}
 @keyframes ctaPulse{0%,100%{box-shadow:0 14px 44px rgba(226,177,92,.28)}50%{box-shadow:0 14px 62px rgba(226,177,92,.44)}}
 
+/* ===== MOUSE-GLOW + HAIRLINE DIVIDERS ===== */
+.hero{--mx:62%;--my:26%}
+.hero-scrim{background:linear-gradient(95deg,var(--ink) 0%,rgba(10,9,8,.92) 38%,rgba(10,9,8,.45) 62%,rgba(10,9,8,.05) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 28%),radial-gradient(900px 900px at var(--mx) var(--my),rgba(226,177,92,.18),transparent 60%)}
+.sec-rule{display:flex;align-items:center;gap:14px;max-width:1360px;margin:0 auto;padding:0 30px;opacity:.62}
+.sec-rule::before,.sec-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line2) 12%,var(--line2) 88%,transparent)}
+.sec-rule span{width:7px;height:7px;background:var(--amber);transform:rotate(45deg);box-shadow:0 0 14px rgba(226,177,92,.6);animation:rulePulse 3s ease-in-out infinite}
+@keyframes rulePulse{0%,100%{box-shadow:0 0 10px rgba(226,177,92,.5)}50%{box-shadow:0 0 22px rgba(226,177,92,.85)}}
+
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
 .pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
@@ -256,6 +264,14 @@ html.reveal-ready .rx.rx-in{opacity:1;transform:none;filter:none}
 /* ambient pulse CTA */
 .btn.amber{animation:ctaPulse 3.6s ease-in-out infinite}
 @keyframes ctaPulse{0%,100%{box-shadow:0 14px 44px rgba(226,177,92,.28)}50%{box-shadow:0 14px 62px rgba(226,177,92,.44)}}
+
+/* ===== MOUSE-GLOW + HAIRLINE DIVIDERS ===== */
+.hero{--mx:62%;--my:26%}
+.hero-scrim{background:linear-gradient(95deg,var(--ink) 0%,rgba(10,9,8,.92) 38%,rgba(10,9,8,.45) 62%,rgba(10,9,8,.05) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 28%),radial-gradient(900px 900px at var(--mx) var(--my),rgba(226,177,92,.18),transparent 60%)}
+.sec-rule{display:flex;align-items:center;gap:14px;max-width:1360px;margin:0 auto;padding:0 30px;opacity:.62}
+.sec-rule::before,.sec-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line2) 12%,var(--line2) 88%,transparent)}
+.sec-rule span{width:7px;height:7px;background:var(--amber);transform:rotate(45deg);box-shadow:0 0 14px rgba(226,177,92,.6);animation:rulePulse 3s ease-in-out infinite}
+@keyframes rulePulse{0%,100%{box-shadow:0 0 10px rgba(226,177,92,.5)}50%{box-shadow:0 0 22px rgba(226,177,92,.85)}}
 
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
