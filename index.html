@@ -2,6 +2,11 @@
 <html lang="en" data-theme="dossier">
 <head>
 <noscript><style>.reveal,.mask{opacity:1 !important;transform:none !important;clip-path:none !important}
+/* ===== cinematic film grain overlay ===== */
+.grain-fx{position:fixed;inset:-60px;z-index:60;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  background-size:220px 220px;animation:grainFx 1.3s steps(4) infinite}
+@keyframes grainFx{0%{transform:translate(0,0)}33%{transform:translate(-14px,8px)}66%{transform:translate(11px,-10px)}100%{transform:translate(0,0)}}
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
 .pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
@@ -81,18 +86,20 @@ body::after{content:"";position:fixed;bottom:-30vh;right:-15vw;width:60vmax;heig
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 20%;filter:grayscale(.35) contrast(1.05) brightness(.62);opacity:.95}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 20%;filter:grayscale(.35) contrast(1.05) brightness(.62);opacity:.95;animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1.02) translate(0,0)}50%{transform:scale(1.08) translate(-2%,-3%)}100%{transform:scale(1.04) translate(2%,2%)}}
 .hero-scrim{position:absolute;inset:0;background:linear-gradient(95deg,var(--ink) 0%,rgba(10,9,8,.92) 38%,rgba(10,9,8,.45) 62%,rgba(10,9,8,.05) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 28%)}
 .hero-inner{position:relative;z-index:2;max-width:1360px;margin:0 auto;width:100%;padding:96px 30px 30px}
 .eyebrow{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:9px;letter-spacing:.42em;color:var(--amber);margin-bottom:30px}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 13px var(--amber);animation:pulse 2s infinite}
 .eyebrow span span{color:rgba(245,239,227,.55)}
 .eyebrow em{font-style:normal;color:rgba(245,239,227,.55)}
-.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.42em;color:var(--dim);text-transform:uppercase;margin-bottom:18px}
-.kicker b{color:var(--amber);font-weight:500}
+.vol-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.42em;color:var(--paper);text-transform:uppercase;margin-bottom:18px}
+.vol-kicker b{color:var(--amber);font-weight:500}
+.vol-kicker .k-label{font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--amber);display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .name{font-family:var(--disp);font-weight:700;font-size:clamp(58px,9.8vw,128px);line-height:.9;letter-spacing:-.05em;margin-left:-0.05em}
 .name .l{display:block}
-.name .s1{color:#F5EFE3;clip-path:polygon(0 0,0 100%,0 100%)}
+.name .s1{color:#F5EFE3}
 .name .s2{color:transparent;-webkit-text-stroke:1.2px #F5EFE3}
 .name .s3{color:var(--amber);font-style:italic;font-family:var(--serif);font-weight:900}
 .name .s3 i{font-style:italic}
@@ -205,6 +212,11 @@ h2.sec-title i{color:var(--amber);font-style:normal}
   .contact-panel{flex-direction:column;padding:52px 28px;align-items:start}
 }
 
+/* ===== cinematic film grain overlay ===== */
+.grain-fx{position:fixed;inset:-60px;z-index:60;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  background-size:220px 220px;animation:grainFx 1.3s steps(4) infinite}
+@keyframes grainFx{0%{transform:translate(0,0)}33%{transform:translate(-14px,8px)}66%{transform:translate(11px,-10px)}100%{transform:translate(0,0)}}
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
 .pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
@@ -229,6 +241,7 @@ h2.sec-title i{color:var(--amber);font-style:normal}
 </head>
 <body>
 <a class="skip" href="#about">SKIP TO CONTENT</a>
+<div class="grain-fx" aria-hidden="true"></div>
 <div id="preloader"><div class="pre-inner"><div class="pre-logo">Joel<span>.dev</span></div><div class="pre-bar"><i id="preBar"></i></div><div class="pre-text" id="preText">loading universe_</div></div></div>
 <canvas id="stars" aria-hidden="true"></canvas>
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -253,7 +266,7 @@ h2.sec-title i{color:var(--amber);font-style:normal}
 
   <div class="hero-inner">
     <p class="eyebrow"><span class="dot"></span><span>OPEN TO AI/ML INTERNSHIPS <em>· KOZHIKODE · REMOTE OK</em></span></p>
-    <p class="kicker reveal d1">VOL. I — THE <b>DOSSIER</b></p>
+    <p class="vol-kicker reveal d1">VOL. I — THE <b>DOSSIER</b></p>
     <h1 class="name">
       <span class="l s1 reveal d1">Joel</span>
       <span class="l s2 reveal d2">Williams</span>
