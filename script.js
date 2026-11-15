@@ -96,6 +96,19 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
+// ============ Ambient hero cursor tracking ============
+(function () {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  function onMove(e) {
+    var r = hero.getBoundingClientRect();
+    var x = ((e.clientX - r.left) / r.width) * 100;
+    var y = ((e.clientY - r.top) / r.height) * 100;
+    hero.style.setProperty('--mx', x.toFixed(1) + '%');
+    hero.style.setProperty('--my', y.toFixed(1) + '%');
+  }
+  hero.addEventListener('mousemove', onMove, { passive: true });
+})();
 // ============ Scroll Reveal (.rx) â€” rises in as you scroll ============
 (function () {
   var els = document.querySelectorAll('.rx');
