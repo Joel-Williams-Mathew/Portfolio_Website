@@ -96,6 +96,16 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
+// ============ Scroll Reveal (.rx) â€” rises in as you scroll ============
+(function () {
+  var els = document.querySelectorAll('.rx');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('rx-in'); }); return; }
+  var rx = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('rx-in'); rx.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  els.forEach(function (el) { rx.observe(el); });
+})();
+
 // Chapter dots / section rail
 (function () {
   var chaps = Array.prototype.slice.call(document.querySelectorAll('.chap'));
