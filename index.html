@@ -1,424 +1,446 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="nebula">
+<html lang="en" data-theme="dossier">
 <head>
-<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>.reveal,.mask{opacity:1 !important;transform:none !important;clip-path:none !important}
+/* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
+#preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+.pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
+.pre-bar i{display:block;height:100%;width:30%;background:var(--amber);transition:width .4s}
+.pre-logo{font-family:var(--mono);font-size:22px;letter-spacing:.28em;color:var(--paper)}
+.pre-logo span{color:var(--amber)}
+.pre-text{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--dim);margin-top:9px}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.6;pointer-events:none}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,transparent,var(--amber) 40%,var(--amber));z-index:1000;box-shadow:0 0 14px rgba(226,177,92,.6)}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);margin:18px 0 0}
+.marquee-track{display:flex;gap:34px;width:max-content;animation:tick 24s linear infinite;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);padding:9px 0}
+.marquee-track b{color:var(--amber);margin-right:8px;font-weight:500}
+.chapters{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:13px}
+.chap{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(245,239,227,.3);font-family:var(--mono);font-size:8px;letter-spacing:.22em}
+.chap i{display:block;width:16px;height:1px;background:rgba(245,239,227,.26);transition:width .35s,background .35s}
+.chap small{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;color:rgba(245,239,227,.66);opacity:0;transition:all .4s}
+.chap:hover i,.chap.on i{width:32px;background:var(--amber)}
+.chap:hover small,.chap.on small{max-width:200px;opacity:1;color:var(--amber)}
+.chap.on{color:var(--amber)}
+@media(max-width:1150px){.chapters{display:none}}
+</style></noscript>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Joel Williams Mathew — AI/ML Developer</title>
-<meta name="description" content="Joel Williams Mathew — AI/ML Developer | Generative AI & Intelligent Systems. Think. Build. Experiment. Repeat." />
-<meta name="theme-color" content="#020409">
+<title>Joel Williams Mathew — AI/ML Engineer | The Dossier</title>
+<meta name="description" content="Joel Williams Mathew — AI/ML Engineer. Kerala, India. B.Tech AI & Data Science at SJCET Palai. NASA Space Apps 2025 Nominee. Open to AI/ML internships." />
+<meta name="theme-color" content="#0A0908">
 <link rel="icon" href="assets/favicon.png?v=2" type="image/png">
-<!-- Open Graph / LinkedIn share card -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joel Williams Mathew — AI/ML Developer | Generative AI & Intelligent Systems">
-<meta property="og:description" content="Think. Build. Experiment. Repeat. — AI/ML Developer from SJCET Palai. NASA Space Apps 2025 Nominee. Projects: A World Away, Plant Disease AI, RAG Agent, Emotion Detection, JoeBot RL Agent.">
-<meta property="og:image" content="assets/joel-profile.jpg">
-<meta property="og:url" content="https://github.com/Joel-Williams-Mathew">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Joel Williams Mathew — AI/ML Developer">
-<meta name="twitter:description" content="Think. Build. Experiment. Repeat. AI/ML Developer | Generative AI & Intelligent Systems.">
-<meta name="twitter:image" content="assets/joel-profile.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,600;1,900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0908;
+  --panel:#141310;
+  --panel2:#1A1815;
+  --line:rgba(245,239,227,.10);
+  --line2:rgba(245,239,227,.22);
+  --paper:#F5EFE3;
+  --dim:rgba(245,239,227,.62);
+  --amber:#E2B15C;
+  --amber-deep:#B8893F;
+  --amber-soft:rgba(226,177,92,.13);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+  --disp:'Space Grotesk',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--ink);color-scheme:dark;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--amber);color:var(--ink)}
+
+/* ambient */
+body::before{content:"";position:fixed;top:-25vh;left:20vw;width:80vmax;height:80vmax;background:radial-gradient(circle,rgba(226,177,92,.06),transparent 55%);z-index:0;pointer-events:none}
+body::after{content:"";position:fixed;bottom:-30vh;right:-15vw;width:60vmax;height:60vmax;background:radial-gradient(circle,rgba(226,177,92,.045),transparent 55%);z-index:0;pointer-events:none}
+
+/* skip link */
+.skip{position:absolute;top:-40px;left:10px;background:var(--amber);color:var(--ink);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.2em;padding:10px 14px;z-index:999}
+.skip:focus{top:10px}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(14px);background:rgba(10,9,8,.55);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1360px;margin:0 auto;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 30px}
+.brand{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--paper);text-decoration:none;display:flex;align-items:center;gap:12px}
+.brand i{display:block;width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.brand b{color:var(--amber);font-weight:600}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{position:relative;color:var(--dim);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:8px 18px;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:18px;right:18px;bottom:2px;height:1.5px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.9,.2,1)}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--ink);background:var(--amber);text-decoration:none;padding:12px 20px;border-radius:2px;white-space:nowrap;transition:background .3s,transform .3s}
+.nav-cta:hover{background:#E9C177;transform:translateY(-1px)}
+.nav-cta.ghost{background:transparent;color:var(--paper);border:1px solid var(--line2)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 20%;filter:grayscale(.35) contrast(1.05) brightness(.62);opacity:.95}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(95deg,var(--ink) 0%,rgba(10,9,8,.92) 38%,rgba(10,9,8,.45) 62%,rgba(10,9,8,.05) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 28%)}
+.hero-inner{position:relative;z-index:2;max-width:1360px;margin:0 auto;width:100%;padding:96px 30px 30px}
+.eyebrow{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:9px;letter-spacing:.42em;color:var(--amber);margin-bottom:30px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 13px var(--amber);animation:pulse 2s infinite}
+.eyebrow span span{color:rgba(245,239,227,.55)}
+.eyebrow em{font-style:normal;color:rgba(245,239,227,.55)}
+.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.42em;color:var(--dim);text-transform:uppercase;margin-bottom:18px}
+.kicker b{color:var(--amber);font-weight:500}
+.name{font-family:var(--disp);font-weight:700;font-size:clamp(58px,9.8vw,128px);line-height:.9;letter-spacing:-.05em;margin-left:-0.05em}
+.name .l{display:block}
+.name .s1{color:#F5EFE3;clip-path:polygon(0 0,0 100%,0 100%)}
+.name .s2{color:transparent;-webkit-text-stroke:1.2px #F5EFE3}
+.name .s3{color:var(--amber);font-style:italic;font-family:var(--serif);font-weight:900}
+.name .s3 i{font-style:italic}
+/* reveal */
+.reveal{opacity:0;transform:translateY(38px);filter:blur(10px);animation:rise .9s cubic-bezier(.2,.9,.25,1) forwards}
+.reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.18s}.reveal.d3{animation-delay:.28s}.reveal.d4{animation-delay:.38s}.reveal.d5{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+.role{margin-top:26px;max-width:46ch;color:rgba(245,239,227,.82);font-size:17px;line-height:1.55}
+.role strong{color:#fff;border-bottom:1px solid var(--amber)}
+.meta-row{display:flex;align-items:center;gap:26px;margin-top:30px;flex-wrap:wrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:rgba(245,239,227,.5)}
+.meta-row b{color:var(--amber);font-weight:500}
+.cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.26em;padding:16px 28px;border-radius:2px;display:inline-flex;align-items:center;gap:12px;transition:all .3s;text-transform:uppercase}
+.btn.amber{background:var(--amber);color:var(--ink);box-shadow:0 14px 44px rgba(226,177,92,.28)}
+.btn.amber:hover{transform:translateY(-2px);background:#E9C177;box-shadow:0 18px 56px rgba(226,177,92,.34)}
+.btn.ghost{border:1px solid var(--line2);color:var(--paper)}
+.btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+.scroll{position:absolute;bottom:104px;left:30px;z-index:3;display:flex;align-items:center;gap:18px}
+.scroll-line{position:relative;width:1px;height:54px;background:rgba(245,239,227,.18);overflow:hidden}
+.scroll-line::after{content:"";position:absolute;top:-12px;left:-1px;width:3px;height:14px;background:var(--amber);box-shadow:0 0 8px var(--amber);animation:drop 2.2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes drop{0%{top:-14px;opacity:0}25%{opacity:1}100%{top:120%;opacity:0}}
+.scroll-txt{font-family:var(--mono);font-size:8.5px;letter-spacing:.42em;color:rgba(245,239,227,.55)}
+
+/* hero strip (trusted creds) */
+.strip{position:absolute;bottom:0;left:0;right:0;z-index:3;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(10,9,8,.4);backdrop-filter:blur(8px)}
+.strip-inner{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;padding:16px 30px;font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:rgba(245,239,227,.5);flex-wrap:wrap;gap:14px}
+.strip-inner span{display:flex;align-items:baseline;gap:10px}
+.strip-inner b{color:#F5EFE3;font-weight:500}
+
+/* ============ SECTIONS ============ */
+section{padding:110px 30px;position:relative}
+.wrap{max-width:1360px;margin:0 auto;position:relative}
+.kicker{display:flex;justify-content:space-between;align-items:end;gap:30px;border-bottom:1px solid var(--line2);padding-bottom:22px;margin-bottom:60px}
+.kicker .k-label{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--amber)}
+.kicker .k-label::before{content:"";width:44px;height:1px;background:var(--amber)}
+h2.sec-title{font-family:var(--disp);font-weight:700;font-size:clamp(40px,5.4vw,72px);line-height:.98;letter-spacing:-.04em;max-width:18ch}
+h2.sec-title em{color:transparent;-webkit-text-stroke:1px var(--amber)}
+h2.sec-title i{color:var(--amber);font-style:normal}
+.kicker .k-num{font-family:var(--disp);font-weight:700;font-size:clamp(72px,9vw,120px);line-height:.78;color:transparent;-webkit-text-stroke:1px rgba(245,239,227,.25)}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:stretch}
+.portrait-frame{position:relative;overflow:hidden;border:1px solid var(--line2);border-radius:2px;min-height:480px}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 12%;filter:grayscale(.5) contrast(1.08)}
+.portrait-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(10,9,8,.78) 100%)}
+.portrait-cap{position:absolute;bottom:20px;left:20px;right:20px;z-index:1;display:flex;justify-content:space-between;align-items:end;font-family:var(--mono);color:#F5EFE3;font-size:8.5px;letter-spacing:.24em}
+.portrait-cap b{color:var(--amber)}
+.about-copy{display:flex;flex-direction:column;gap:18px}
+.about-kick{font-family:var(--mono);font-size:9px;letter-spacing:.42em;color:var(--amber)}
+.about-copy h3{font-family:var(--disp);font-weight:600;font-size:34px;line-height:1.04;letter-spacing:-.025em;max-width:20ch}
+.about-copy h3 em{color:var(--amber);font-style:normal}
+.about-copy p{font-size:16.5px;line-height:1.65;color:var(--dim);max-width:48ch}
+.about-copy p strong{color:#fff}
+.about-facts{display:flex;flex-direction:column;margin-top:8px}
+.fact{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--line);padding:15px 0}
+.fact:last-child{border-bottom:0}
+.fact dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.28em;color:var(--amber);padding-top:3px}
+.fact dd{font-size:14px;color:var(--paper)}
+
+/* ============ CASES ============ */
+.case{display:grid;grid-template-columns:90px 1fr 1fr;border:1px solid var(--line2);border-radius:2px;overflow:hidden;background:var(--panel);transition:transform .35s,border-color .35s}
+.case:hover{transform:translateY(-3px);border-color:rgba(226,177,92,.45)}
+.case + .case{margin-top:14px}
+.case-num{font-family:var(--disp);font-weight:600;font-size:56px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(226,177,92,.6);padding:26px 20px;border-right:1px solid var(--line)}
+.case-body{padding:26px 30px;display:flex;flex-direction:column;gap:12px}
+.case-tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.35em;color:var(--amber)}
+.case-title{font-family:var(--disp);font-weight:600;font-size:32px;letter-spacing:-.02em;line-height:1.05}
+.case-desc{color:var(--dim);font-size:14px;line-height:1.55}
+.case-tags{display:flex;gap:8px;flex-wrap:wrap}
+.case-tags span{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;color:var(--dim);border:1px solid var(--line);padding:6px 10px}
+.case-link{align-self:start;margin-top:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(226,177,92,.5);padding-bottom:4px}
+.case-link:hover{color:#E9C177;border-color:#E9C177}
+.case-side{position:relative;border-left:1px solid var(--line);display:grid;place-items:center;background:radial-gradient(circle at 60% 40%,rgba(226,177,92,.1),transparent 55%);min-height:240px;overflow:hidden}
+.case-side span{font-family:var(--disp);font-weight:600;font-size:160px;color:rgba(226,177,92,.09);user-select:none}
+.case-side::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 14px,rgba(255,255,255,.015) 14px 15px)}
+
+/* ============ EXPERIENCE ============ */
+.exp{display:grid;grid-template-columns:150px 1fr;gap:60px;padding:38px 0;border-bottom:1px solid var(--line)}
+.exp:last-child{border-bottom:0}
+.exp-date{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;color:var(--amber);padding-top:10px}
+.exp-role{font-family:var(--disp);font-weight:600;font-size:26px;letter-spacing:-.015em}
+.exp-org{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--dim);margin-top:6px}
+.exp-body{margin-top:12px;color:var(--dim);font-size:14.5px;line-height:1.6;max-width:62ch}
+.exp-line{position:relative;border-left:1px solid var(--line2);padding-left:48px}
+.exp-line::before{content:"";position:absolute;left:-5px;top:46px;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+
+/* ============ CONTACT PANEL ============ */
+.contact{padding:70px 30px 110px}
+.contact-panel{position:relative;overflow:hidden;border:1px solid rgba(226,177,92,.4);border-radius:2px;padding:80px 64px;background:var(--amber);color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:50px}
+.contact-panel::after{content:"";position:absolute;top:0;right:0;width:46%;height:100%;background:radial-gradient(circle at 60% 40%,rgba(184,137,63,.3),transparent 60%)}
+.contact-inner{position:relative;z-index:1;max-width:720px}
+.contact-k{font-family:var(--mono);font-size:9px;letter-spacing:.4em;color:var(--amber-deep)}
+.contact-big{font-family:var(--disp);font-weight:700;font-size:clamp(40px,6.6vw,82px);line-height:.92;letter-spacing:-.045em;margin-top:18px;color:#0A0908}
+.contact-big em{color:#6b4f1c;font-style:normal}
+.contact-cta{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--amber);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.3em;padding:20px 30px;border-radius:2px;white-space:nowrap;transition:transform .3s}
+.contact-cta:hover{transform:translateY(-2px)}
+
+/* ============ FOOTER ============ */
+.foot{border-top:1px solid var(--line2);padding:28px 30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:8px;letter-spacing:.3em;color:var(--dim)}
+.foot b{color:var(--paper)}
+.foot span em{color:var(--amber);font-style:normal}
+
+@media (max-width:1024px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .case{grid-template-columns:64px 1fr;gap:0}
+  .case-side{display:none}
+  .exp{grid-template-columns:1fr;gap:10px}
+  .exp-line{padding-left:24px}
+  .contact-panel{flex-direction:column;padding:52px 28px;align-items:start}
+}
+
+/* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
+#preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+.pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
+.pre-bar i{display:block;height:100%;width:30%;background:var(--amber);transition:width .4s}
+.pre-logo{font-family:var(--mono);font-size:22px;letter-spacing:.28em;color:var(--paper)}
+.pre-logo span{color:var(--amber)}
+.pre-text{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--dim);margin-top:9px}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.6;pointer-events:none}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,transparent,var(--amber) 40%,var(--amber));z-index:1000;box-shadow:0 0 14px rgba(226,177,92,.6)}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);margin:18px 0 0}
+.marquee-track{display:flex;gap:34px;width:max-content;animation:tick 24s linear infinite;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);padding:9px 0}
+.marquee-track b{color:var(--amber);margin-right:8px;font-weight:500}
+.chapters{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:13px}
+.chap{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(245,239,227,.3);font-family:var(--mono);font-size:8px;letter-spacing:.22em}
+.chap i{display:block;width:16px;height:1px;background:rgba(245,239,227,.26);transition:width .35s,background .35s}
+.chap small{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;color:rgba(245,239,227,.66);opacity:0;transition:all .4s}
+.chap:hover i,.chap.on i{width:32px;background:var(--amber)}
+.chap:hover small,.chap.on small{max-width:200px;opacity:1;color:var(--amber)}
+.chap.on{color:var(--amber)}
+@media(max-width:1150px){.chapters{display:none}}
+</style>
 </head>
 <body>
+<a class="skip" href="#about">SKIP TO CONTENT</a>
 <div id="preloader"><div class="pre-inner"><div class="pre-logo">Joel<span>.dev</span></div><div class="pre-bar"><i id="preBar"></i></div><div class="pre-text" id="preText">loading universe_</div></div></div>
-<canvas id="stars"></canvas>
-<div class="space-scene" aria-hidden="true">
-  <img src="assets/space-scene.svg?v=4" alt="">
-</div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-  <div class="orbit-ring orbit-ring-2" data-depth="0.14"></div>
-</div>
-
-<div class="space-grid" aria-hidden="true"></div>
-<div class="grid-overlay"></div>
-<div class="scanlines"></div>
-<div class="nebula n1"></div><div class="nebula n2"></div><div class="nebula n3"></div>
-<div class="aurora"></div>
-<div class="vignette"></div>
-<div class="grain"></div>
-<div class="cursor" id="cursor"></div>
-<div id="trail"></div>
-<div class="progress" id="progress"></div>
-
-<nav id="nav">
-  <a class="logo" href="#home"><span class="logo-dot"></span> Joel<span>.dev</span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#resume">Resume</a><a href="#beyond">Beyond Code</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">JOEL<b>·</b>WILLIAMS MATHEW</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:joelw2200@gmail.com">HIRE ME</a>
   </div>
-  <div class="nav-actions">
-    <a class="views" id="viewsPill" href="https://hits.sh/joel-williams-mathew.github.io/Portfolio_Website/" target="_blank" rel="noopener" title="Portfolio views"><span class="views-dot"></span><span class="views-label">Views</span><img id="viewsImg" alt="Portfolio view count" src="https://hits.sh/joel-williams-mathew.github.io/Portfolio_Website.svg?style=flat-square&color=4ade80&labelColor=4ade80&label=%20"></a>
-    <span class="clock" id="clock">--:--</span>
-    <select class="theme-select" id="themeSelect" aria-label="Select theme">
-      <option value="vol1">✦ Vol. I</option><option value="nebula">✦ Real Space</option><option value="neon">◤ Neon</option><option value="sunset">☀ Sunset</option><option value="ocean">🌊 Ocean</option><option value="forest">🌲 Forest</option><option value="crimson">🔥 Crimson</option><option value="arctic">❄ Arctic</option><option value="golden">✦ Golden</option>
-    </select>
-    <a class="nav-cta" href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">GitHub ↗</a>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
-  </div>
-</nav>
-
-<header class="hero" id="home">
-  <div class="plate">
-    <div class="plate-top">
-      <span>© JOEL WILLIAMS MATHEW — AI &amp; DATA SCIENCE</span>
-      <span class="pl-right">EST. 2024 · VOL. I</span>
-    </div>
-    <h1 class="plate-name"><span class="pl1">JOEL</span><span class="pl2">WILLIAMS</span><span class="pl3">MATHEW.</span></h1>
-    <img class="plate-photo" src="assets/joel-profile.jpg" alt="Joel Williams Mathew, AI/ML Developer">
-    <div class="plate-roles reveal">
-      <strong>AI/ML<br>Engineer</strong>
-      <span>Generative Systems.</span>
-    </div>
-    <div class="plate-socials reveal">
-      <a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">GITHUB</a>
-      <a href="https://www.linkedin.com/in/joel-williams-97b375272/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="https://x.com/joelw2200" target="_blank" rel="noopener">X</a>
-      <a href="mailto:joelw2200@gmail.com">EMAIL</a>
-    </div>
-    <div class="plate-stats">
-      <span><b>25+</b>REPOS</span><i>·</i>
-      <span><b>NASA</b>APPS '25</span><i>·</i>
-      <span><b>460</b>CONTRIBUTIONS</span>
-      <a class="plate-hire" href="mailto:joelw2200@gmail.com">HIRE ME →</a>
-    </div>
-  </div>
-  <div class="vf" aria-hidden="true">
-    <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
-    <span class="vf-corner bl"></span><span class="vf-corner br"></span>
-    <span class="vf-notch l"></span><span class="vf-notch r"></span>
-  </div>
-  <div class="scroll-cue" aria-hidden="true">
-    <span>SCROLL</span>
-    <div class="cue-line"><i></i></div>
-  </div>
-  <div class="marquee"><div class="marquee-track" id="marquee"></div></div>
 </header>
 
-<section class="dossier reveal" aria-label="The short version">
-  <div class="dossier-box">
-    <p class="dossier-kicker">✦ THE SHORT VERSION</p>
-    <div class="dossier-rows">
-      <p><strong>WHO</strong><span>Joel Williams Mathew — AI/ML developer · B.Tech AI &amp; DS · SJCET Palai · NASA Space Apps 2025 Nominee</span></p>
-      <p><strong>STACK</strong><span>Python · PyTorch · TensorFlow · LangChain · RAG · OpenCV · MediaPipe · React</span></p>
-      <p><strong>NOW</strong><span>Open to AI/ML internships — Kozhikode · remote ok · replies within a day</span></p>
+<!-- ============ HERO — THE DOSSIER ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="assets/hero-cinematic.jpg?v=5" alt="Joel Williams Mathew at a mountain overlook, coding at sunrise"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-inner">
+    <p class="eyebrow"><span class="dot"></span><span>OPEN TO AI/ML INTERNSHIPS <em>· KOZHIKODE · REMOTE OK</em></span></p>
+    <p class="kicker reveal d1">VOL. I — THE <b>DOSSIER</b></p>
+    <h1 class="name">
+      <span class="l s1 reveal d1">Joel</span>
+      <span class="l s2 reveal d2">Williams</span>
+      <span class="l s3 reveal d3"><em>Mathew.</em></span>
+    </h1>
+    <p class="role reveal d4">AI/ML Developer building <strong>working intelligence</strong> — exoplanet discovery, crop intelligence and agentic systems. B.Tech <strong>AI &amp; DS</strong>, SJCET Palai.</p>
+    <div class="meta-row reveal d4">
+      <span><b>NASA</b> SPACE APPS ’25</span>
+      <span><b>1.4K</b> LINKEDIN</span>
+      <span><b>25+</b> REPOS</span>
+      <span><b>460+</b> CONTRIBUTIONS</span>
     </div>
-    <p class="dossier-foot">★ directed &amp; produced by J. Joel Williams Mathew — Kerala Monsoon × PyTorch</p>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="sec-head reveal"><span class="ghost">01</span><span>SECTION A — THE REPORTER</span><h2>Intelligence, <em>engineered</em></h2><p>B.Tech Artificial Intelligence & Data Science, SJCET Palai. Focused on Generative AI, Intelligent Systems, and applied machine learning.</p></div>
-  <div class="about-grid">
-    <div class="glass card reveal">
-      <h3>What I do</h3>
-      <p class="dropcap">I thrive on learning, experimenting, and collaborating with like-minded individuals. Currently exploring Computer Vision (hand gesture detection, facial recognition), Natural Language Processing, Prompt Engineering for smarter AI interactions, and building intelligent apps using Python, OpenCV, and MediaPipe.</p>
-      <ul class="chips">
-        <li>Generative AI</li><li>Machine Learning</li><li>Computer Vision</li><li>LLM Apps</li><li>RAG Systems</li><li>Data Science</li>
-      </ul>
-      <div class="quote">“My long-term goal is to become a skilled AI/ML engineer at a top tech company like Google, Amazon, or Infosys — and later, dive into ethical hacking to contribute to national and global cybersecurity.”</div>
-    </div>
-    <div class="glass card reveal timeline-tech">
-      <h3>Core stack</h3>
-      <div class="skill"><label>Python & ML</label><div class="bar"><i style="--w:95%"></i></div><span>95%</span></div>
-      <div class="skill"><label>TensorFlow / CNN / CV</label><div class="bar"><i style="--w:88%"></i></div><span>88%</span></div>
-      <div class="skill"><label>LLMs / LangChain / RAG</label><div class="bar"><i style="--w:85%"></i></div><span>85%</span></div>
-      <div class="skill"><label>React / Modern Web</label><div class="bar"><i style="--w:75%"></i></div><span>75%</span></div>
-      <div class="chips mono" style="margin-top:16px"><span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>LangChain</span><span>React</span><span>Git</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="section">
-  <div class="sec-head reveal"><span class="ghost">02</span><span>SPECIAL REPORT — THE ARCHIVE</span><h2>Selected <em>experiments</em></h2><p>Four flagship builds — each a different orbit of AI.</p></div>
-  <div class="projects">
-
-    <article class="project glass reveal" data-tilt>
-      <div class="p-top"><span class="p-num">01</span><span class="p-badge">NASA SPACE APPS</span></div>
-      <div class="p-icon">🪐</div>
-      <h3>A World Away</h3>
-      <p class="p-sub">Hunting for Exoplanets with AI</p>
-      <p>Machine learning pipeline to detect and characterize exoplanets from astronomical data. Built for NASA Space Apps 2025 — combining orbital data exploration with intelligent prediction.</p>
-      <div class="chips"><span>Python</span><span>ML</span><span>NASA Space Apps</span><span>Data Viz</span></div>
-      <div class="p-links"><a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-    </article>
-
-    <article class="project glass reveal" data-tilt>
-      <div class="p-top"><span class="p-num">02</span><span class="p-badge">AGTECH + VISION</span></div>
-      <div class="p-icon">🌱</div>
-      <h3>Plant Disease Intelligence</h3>
-      <p class="p-sub">Real-time crop diagnosis platform</p>
-      <p>CNN-based diagnosis that identifies plant diseases from leaf imagery and serves actionable insights through a React interface — bringing AI to the farm.</p>
-      <div class="chips"><span>Python</span><span>TensorFlow</span><span>CNN</span><span>React</span></div>
-      <div class="p-links"><a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-    </article>
-
-    <article class="project glass reveal" data-tilt>
-      <div class="p-top"><span class="p-num">03</span><span class="p-badge">LLM / AGENTIC AI</span></div>
-      <div class="p-icon">🧩</div>
-      <h3>RAG AI Agent</h3>
-      <p class="p-sub">Retrieval-augmented intelligent assistant</p>
-      <p>A LangChain-powered agent that grounds LLM answers in your own knowledge base — embeddings, vector search, and conversational reasoning in one system.</p>
-      <div class="chips"><span>Python</span><span>LLMs</span><span>LangChain</span><span>RAG</span></div>
-      <div class="p-links"><a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-    </article>
-
-    <article class="project glass reveal" data-tilt>
-      <div class="p-top"><span class="p-num">04</span><span class="p-badge">COMPUTER VISION</span></div>
-      <div class="p-icon">👁️</div>
-      <h3>Emotion Detection System</h3>
-      <p class="p-sub">Real-time facial emotion recognition</p>
-      <p>Live webcam pipeline using OpenCV + CNN to detect facial emotions in real time — frame processing, face tracking, and classification at interactive speed.</p>
-      <div class="chips"><span>Python</span><span>TensorFlow</span><span>CNN</span><span>OpenCV</span></div>
-      <div class="p-links"><a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-    </article>
-
-  </div>
-  <p class="continued">CONTINUED ON PAGE A7 — THE FEATURED ARCHIVE <span>→</span></p>
-</section>
-
-<!-- Experience: pulled from LinkedIn public preview (headline / About) + SJCET dark mode -->
-<section id="experience" class="section">
-  <div class="sec-head reveal"><span class="ghost">03</span><span>FIELD DISPATCHES</span><h2>From LinkedIn to <em>reality</em></h2><p>What my profile says — and what I'm building next.</p></div>
-  <div class="exp-grid">
-    <div class="glass card reveal">
-      <h3>💼 PaceLab, Kozhikode</h3>
-      <p class="exp-meta">Internship · Machine Learning</p>
-      <p>Completed a hands-on internship focused on AI & Data Science: trained <strong>2 ML models</strong>, completed a major and minor project, and connected with <strong>28 other passionate minds</strong> under the mentorship of <strong>Joel Basil Kurian</strong> — deepening both technical skills and real-world AI perspective.</p>
-      <a class="exp-link" href="https://lnkd.in/p/geSmbz3a" target="_blank" rel="noopener">LinkedIn post ↗</a>
-    </div>
-    <div class="glass card reveal">
-      <h3>🚀 NASA Space Apps 2025</h3>
-      <p class="exp-meta">Global Nominee · 2× Hackathon Finalist</p>
-      <p>Headline on LinkedIn: <em>“Nasa Space Apps 2025 Global Nominee | 2x Hackathon Finalist | AI&DS Student | Machine Learning & Deep Learning | Python Developer”</em> — for “A World Away”: AI for exoplanet discovery.</p>
-      <a class="exp-link" href="https://www.linkedin.com/in/joel-williams-97b375272/" target="_blank" rel="noopener">View on LinkedIn ↗</a>
-    </div>
-    <div class="glass card reveal">
-      <h3>🎓 SJCET Palai</h3>
-      <p class="exp-meta">B.Tech · Artificial Intelligence & Data Science</p>
-      <p>Current education: AI & DS student building toward Generative AI & Intelligent Systems. Exploring Computer Vision, NLP, Prompt Engineering, and intelligent apps with Python, OpenCV, and MediaPipe.</p>
-      <a class="exp-link" href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">See on GitHub ↗</a>
+    <div class="cta-row reveal d5">
+      <a class="btn amber" href="#work">VIEW THE WORK →</a>
+      <a class="btn ghost" href="mailto:joelw2200@gmail.com">GET IN TOUCH</a>
     </div>
   </div>
 
-  <!-- LinkedIn posts, categorized from the real captions -->
-  <div class="li-head reveal">
-    <div>
-      <span class="sec-kicker">LINKEDIN — 5 POSTS, CURATED</span>
-      <h3>Stories from <em>the feed</em></h3>
-      <p>Every caption below is from the actual LinkedIn post. Grouped by Prize, Project, and Milestone — click through to the original.</p>
-    </div>
-    <a class="btn ghost magnetic" href="https://www.linkedin.com/in/joel-williams-97b375272/" target="_blank" rel="noopener">in Follow @joel-williams-97b375272 ↗</a>
+  <div class="scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <p class="scroll-txt">SCROLL</p>
   </div>
 
-  <div class="li-filters reveal" role="tablist" aria-label="Filter LinkedIn posts">
-    <button class="li-filter active" data-filter="all">All Posts</button>
-    <button class="li-filter" data-filter="prize">🏆 Prizes</button>
-    <button class="li-filter" data-filter="project">🤖 Projects</button>
-    <button class="li-filter" data-filter="milestone">✨ Milestone</button>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+<div class="strip" aria-hidden="true">
+    <div class="strip-inner">
+      <span><b>B.TECH</b> AI &amp; DS · SJCET PALAI</span>
+      <span><b>NASA</b> SPACE APPS NOMINEE</span>
+      <span><b>EXPERIENCE</b> COGNIFYZ · PACELAB</span>
+      <span><b>EST.</b> 2024 · KOZHIKODE</span>
+    </div>
   </div>
+</header>
 
-  <!-- SPOTLIGHT — Post 5 (special) -->
-  <article class="li-spot glass reveal" data-cat="milestone" data-tilt>
-    <div class="spot-media">
-      <img src="assets/linkedin/Post 5.png" alt="First chatbot presentation at college" onerror="this.parentElement.classList.add('empty')">
-      <span class="spot-star">⭐ SPECIAL MILESTONE</span>
+<!-- ============ 01 ABOUT — THE DOSSIER ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">
+      <p class="k-label">01 / THE DOSSIER <span style="color:var(--dim)">— WHO I AM</span></p>
+      <span class="k-num">01</span>
     </div>
-    <div class="spot-body">
-      <div class="li-top"><span class="li-cat milestone">✨ Milestone · Post 5</span><span class="li-date">3y ago</span></div>
-      <h3>Presenting my Chatbot on the Inauguration Day of ADSA</h3>
-      <p class="li-sub">My first-ever presentation of my chatbot at college</p>
-      <p>“Presenting my Chatbot on the Inauguration day of ADSA...” — the moment a college prototype stepped onto a stage. Commenters called it “an amazing prototype” — and it sparked everything that came after: RL agents, vision systems, and hackathon prizes.</p>
-      <div class="li-meta">💬 “It was an amazing prototype.. Had a great time there!” — Aibel Bin Zacariah</div>
-      <div class="li-actions"><a class="btn primary magnetic" href="https://lnkd.in/p/gb9RHrE4" target="_blank" rel="noopener">Read on LinkedIn ↗</a></div>
-    </div>
-  </article>
 
-  <div class="li-grid">
-    <!-- POST 4 — PRIZE -->
-    <article class="li-card glass reveal" data-cat="prize" data-tilt>
-      <div class="li-media"><img src="assets/linkedin/Post 4.png" alt="1st Prize Mobile App Development Spectra 3.0" onerror="this.parentElement.classList.add('empty')"></div>
-      <div class="li-body">
-      <div class="li-top"><span class="li-cat prize">🏆 Prize · Post 4</span><span class="li-date">2y ago</span></div>
-      <h3>1st Prize — Mobile App Development, Spectra 3.0</h3>
-      <p>“Securing 1st prize in Mobile App Development organised on Spectra 3.0 with my colleagues Aibel and Devadarsan.” Team win, first-place finish — from college hackathons to national stages.</p>
-      <div class="li-actions"><a href="https://lnkd.in/p/gz5zHsPM" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-      </div>
-    </article>
+    <div class="about-grid">
+      <figure class="portrait-frame">
+        <img src="assets/joel-profile.jpg?v=5" alt="Joel Williams Mathew, AI/ML Developer, SJCET Palai">
+        <figcaption class="portrait-cap"><span><b>JOEL W. MATHEW</b> — AI/ML</span><span>KOZHIKODE · 2024</span></figcaption>
+      </figure>
 
-    <!-- POST 3 — INTERNSHIP / EXPERIENCE -->
-    <article class="li-card glass reveal" data-cat="prize" data-tilt>
-      <div class="li-media"><img src="assets/linkedin/Post 3.png" alt="PaceLab internship" onerror="this.parentElement.classList.add('empty')"></div>
-      <div class="li-body">
-      <div class="li-top"><span class="li-cat prize">💼 Experience · Post 3</span><span class="li-date">1y ago</span></div>
-      <h3>Internship at PaceLab, Kozhikode</h3>
-      <p>“Trained 2 ML models · Completed a major and minor project · Connected with 28 other passionate minds” — under Joel Basil Kurian. Where theory became shipped AI.</p>
-      <div class="li-actions"><a href="https://lnkd.in/p/geSmbz3a" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-      </div>
-    </article>
-
-    <!-- POST 2 — PROJECT -->
-    <article class="li-card glass reveal" data-cat="project" data-tilt>
-      <div class="li-media"><img src="assets/linkedin/Post 2.png" alt="Emotion Detection Python OpenCV" onerror="this.parentElement.classList.add('empty')"></div>
-      <div class="li-body">
-      <div class="li-top"><span class="li-cat project">🤖 Project · Post 2</span><span class="li-date">1y ago</span></div>
-      <h3>Emotion Detection — Python × OpenCV</h3>
-      <p>“A lightweight yet effective model that can detect and classify basic human emotions in real-time… happy, sad, angry, neutral.” Simplicity + accuracy in real-time computer vision.</p>
-      <div class="chips"><span>Python</span><span>OpenCV</span><span>ML</span><span>Deep Learning</span></div>
-      <div class="li-actions"><a href="https://lnkd.in/p/gtVRs46Q" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-      </div>
-    </article>
-
-    <!-- POST 1 — PROJECT / FEATURED -->
-    <article class="li-card glass featured reveal" data-cat="project" data-tilt>
-      <div class="li-media"><img src="assets/linkedin/Post 1.png" alt="JoeBot Reinforcement Learning agent" onerror="this.parentElement.classList.add('empty')"></div>
-      <div class="li-body">
-      <div class="li-top"><span class="li-cat project">🤖 Project · Post 1 · 10mo</span><span class="li-date">Featured ✦</span></div>
-      <h3>How a Game Sparked My Journey into Reinforcement Learning & AI</h3>
-      <p>From losing at Call of Duty to building <strong>JoeBot</strong> — an RL agent trained to detect head regions, prioritize headshots, and learn from a custom reward system. Three weeks of fundamentals, one banned test account, one reward-vs-penalty graph later: “Among my friends, I’m now the best COD player.”</p>
-      <div class="quote small">“I don’t just play games. I learn from curiosity and build crazy things because of it.”</div>
-      <div class="chips"><span>Reinforcement Learning</span><span>Neural Networks</span><span>CV Detection</span><span>JoeBot</span></div>
-      <div class="li-actions"><a href="https://lnkd.in/p/gyMNn-FS" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="resume" class="section">
-  <div class="sec-head reveal"><span class="ghost">04</span><span>PUBLIC RECORD</span><h2>Experience, <em>at a glance</em></h2><p>A clean timeline for recruiters — education, work, and the wins that prove it.</p></div>
-  <div class="resume-wrap">
-    <div class="resume-tl">
-      <div class="resume-item reveal"><span class="resume-date">2025 — Present</span><div><h4>AI/ML Developer</h4><p class="resume-org">SJCET Palai · Open to internships & collaborations</p><p>Building Generative AI & Intelligent Systems — JoeBot RL agent, RAG AI Agent, Plant Disease Intelligence, Emotion Detection.</p><div class="chips"><span>Generative AI</span><span>LLMs</span><span>TensorFlow</span></div></div></div>
-      <div class="resume-item reveal"><span class="resume-date">2025</span><div><h4>NASA Space Apps — Global Nominee</h4><p class="resume-org">NASA Space Apps 2025 · “A World Away”</p><p>Hunting exoplanets with AI — ML pipeline for astronomical data + 2× Hackathon Finalist.</p></div></div>
-      <div class="resume-item reveal"><span class="resume-date">2024 — 2025</span><div><h4>AI & Data Science Intern</h4><p class="resume-org">PaceLab, Kozhikode · Mentor: Joel Basil Kurian</p><p>Trained 2 ML models, shipped a major + minor project with 28 peers.</p></div></div>
-      <div class="resume-item reveal"><span class="resume-date">2023 — 2024</span><div><h4>1st Prize — Spectra 3.0</h4><p class="resume-org">Mobile App Development · With Aibel & Devadarsan</p><p>First-place finish in college hackathon — from campus contests to national stages.</p></div></div>
-      <div class="resume-item reveal"><span class="resume-date">2023 — 2027</span><div><h4>B.Tech, AI & Data Science</h4><p class="resume-org">SJCET Palai</p><p>Focused on intelligent systems, computer vision, and NLP — plus Prompt Engineering & MediaPipe apps.</p></div></div>
-    </div>
-    <div class="resume-side">
-      <div class="glass card reveal">
-        <h3>Skills</h3>
-        <div class="chips"><span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>LangChain</span><span>LLMs / RAG</span><span>CNN</span><span>React</span><span>MediaPipe</span></div>
-      </div>
-      <div class="glass card reveal">
-        <h3>Highlights</h3>
-        <ul class="resume-high">
-          <li>🚀 NASA Space Apps 2025 Global Nominee</li>
-          <li>🏆 1st Prize — Spectra 3.0 Mobile App Dev</li>
-          <li>💼 PaceLab AI Intern — 2 ML models shipped</li>
-          <li>🤖 Built JoeBot, an RL agent for Call of Duty</li>
-          <li>🎓 B.Tech AI & DS, SJCET Palai</li>
-        </ul>
-      </div>
-      <div class="glass card resume-cta reveal">
-        <h3>Want the PDF?</h3>
-        <p>Drop your résumé PDF as <code>assets/joel-resume.pdf</code> and it will download here automatically.</p>
-        <a class="btn primary magnetic" href="assets/joel-resume.pdf" download id="resumeBtn">Download Résumé ⤓</a>
-        <p class="resume-note" id="resumeNote">No PDF yet — add one to enable the button.</p>
+      <div class="about-copy">
+        <p class="about-kick">FILE NO. 004 — AI &amp; DATA SCIENCE</p>
+        <h3>An AI/ML developer shipping <em>working intelligence,</em> not slides.</h3>
+        <p>Enthusiastic and driven B.Tech student in <strong>Artificial Intelligence and Data Science</strong> from Kozhikode, Kerala. I build real-world systems with AI, ML and prompt engineering — exoplanet pipelines for NASA Space Apps 2025, crop-disease diagnosis, RAG agents and computer vision.</p>
+        <p>Currently exploring <strong>Computer Vision</strong>, <strong>NLP</strong>, and <strong>Prompt Engineering</strong> — also JoeBot, an RL agent for Call of Duty that taught me reward shaping the hard way.</p>
+        <dl class="about-facts">
+          <div class="fact"><dt>NAME</dt><dd>Joel Williams Mathew</dd></div>
+          <div class="fact"><dt>ROLE</dt><dd>AI/ML Developer</dd></div>
+          <div class="fact"><dt>EDUCATION</dt><dd>B.Tech AI &amp; DS — SJCET Palai (2023–2027)</dd></div>
+          <div class="fact"><dt>INTERNSHIP</dt><dd>ML Intern — Cognifyz · PaceLab, Kozhikode</dd></div>
+          <div class="fact"><dt>NOTABLE</dt><dd>NASA Space Apps 2025 Nominee · 1st Prize Spectra 3.0</dd></div>
+          <div class="fact"><dt>NOW</dt><dd>Open to AI/ML internships — Kozhikode · remote ok</dd></div>
+        </dl>
       </div>
     </div>
   </div>
 </section>
 
-<section id="beyond" class="section">
-  <div class="sec-head reveal"><span class="ghost">05</span><span>THE LIFE PAGES</span><h2>Behind the <em>screen</em></h2><p>The human behind the models — gaming, fitness, and the trails that shape the mindset.</p></div>
-  <div class="beyond-grid">
-    <div class="glass card reveal hobby">
-      <div class="hb-icon">🎮</div>
-      <h3>Gaming — Call of Duty</h3>
-      <p>Where it all started. Lost to friends, got curious, and built JoeBot — an RL agent that learned to aim for headshots. Now I'm the best COD player in the squad 😄</p>
-      <div class="chips"><span>RL Agent</span><span>JoeBot</span><span>Reward Systems</span></div>
+<!-- ============ 02 WORK — CASES ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="kicker">
+      <p class="k-label">02 / SELECTED WORK <span style="color:var(--dim)">— FOUR CASES</span></p>
+      <span class="k-num">02</span>
     </div>
-    <div class="glass card reveal hobby">
-      <div class="hb-icon">🏋️</div>
-      <h3>Fitness & Discipline</h3>
-      <p>Training taught me the same lesson as ML: small reps, compounded daily, beat big occasional pushes. Consistency is a model, too.</p>
-      <div class="chips"><span>Strength</span><span>Consistency</span><span>Focus</span></div>
+
+    <article class="case">
+      <div class="case-num">01</div>
+      <div class="case-body">
+        <p class="case-tag">NASA SPACE APPS 2025</p>
+        <h3 class="case-title">A World Away</h3>
+        <p class="case-desc">Machine-learning pipeline to detect and characterize exoplanets from astronomical data. Presented at NASA Space Apps 2025 — Global Nominee.</p>
+        <div class="case-tags"><span>PYTHON</span><span>ML</span><span>DATA VIZ</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-side" aria-hidden="true"><span>01</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">02</div>
+      <div class="case-body">
+        <p class="case-tag">AGTECH + VISION</p>
+        <h3 class="case-title">Plant Disease Intelligence</h3>
+        <p class="case-desc">CNN-based diagnosis identifying plant diseases from leaf imagery, served through a React interface for farmers.</p>
+        <div class="case-tags"><span>PYTHON</span><span>TENSORFLOW</span><span>CNN</span><span>REACT</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-side" aria-hidden="true"><span>02</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">03</div>
+      <div class="case-body">
+        <p class="case-tag">LLM / AGENTIC</p>
+        <h3 class="case-title">RAG AI Agent</h3>
+        <p class="case-desc">A LangChain-powered agent grounding LLM answers in your knowledge base — embeddings, vector search and conversational reasoning.</p>
+        <div class="case-tags"><span>PYTHON</span><span>LLMs</span><span>LANGCHAIN</span><span>RAG</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-side" aria-hidden="true"><span>03</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-num">04</div>
+      <div class="case-body">
+        <p class="case-tag">COMPUTER VISION</p>
+        <h3 class="case-title">Emotion Detection System</h3>
+        <p class="case-desc">Live webcam pipeline — OpenCV + CNN frame processing, face tracking, and classification at interactive speed.</p>
+        <div class="case-tags"><span>PYTHON</span><span>TENSORFLOW</span><span>CNN</span><span>OPENCV</span></div>
+        <a class="case-link" href="https://github.com/Joel-Williams-Mathew">→ VIEW ON GITHUB</a>
+      </div>
+      <div class="case-side" aria-hidden="true"><span>04</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 03 EXPERIENCE — FIELD NOTES ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker">
+      <p class="k-label">03 / FIELD NOTES <span style="color:var(--dim)">— WHERE I WORKED</span></p>
+      <span class="k-num">03</span>
     </div>
-    <div class="glass card reveal hobby">
-      <div class="hb-icon">🏔️</div>
-      <h3>Travel & Kerala</h3>
-      <p>Temple trails at sunrise, misty mountains, and campus walks — the spaces that reset my mind between training runs and debug sessions.</p>
-      <div class="chips"><span>Palai</span><span>Kozhikode</span><span>Sunrise Treks</span></div>
-    </div>
-    <div class="glass card reveal now-card">
-      <h3>✦ Now — live</h3>
-      <div class="now-list">
-        <div><span>🎧 Learning</span><strong>Generative AI & Agentic Systems</strong></div>
-        <div><span>🔨 Building</span><strong>JoeBot v2 — faster head-tracking</strong></div>
-        <div><span>📚 Reading</span><strong>Deep Learning papers & RAG patterns</strong></div>
-        <div><span>🎞️ Watching</span><strong>Kerala trails & COD clips (research 😄)</strong></div>
+    <div class="exp-line">
+      <div class="exp">
+        <div class="exp-date">OCT–DEC 2025</div>
+        <div>
+          <h3 class="exp-role">AI/ML Intern — PaceLab, Kozhikode</h3>
+          <p class="exp-org">KOZHIKODE · INTERNSHIP</p>
+          <p class="exp-body">Trained two ML models, completed a major and minor project, and worked with 28 passionate minds under Joel Basil Kurian. Where theory became shipped AI.</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-date">2025</div>
+        <div>
+          <h3 class="exp-role">NASA Space Apps 2025 — Global Nominee</h3>
+          <p class="exp-org">A WORLD AWAY · EXOPLANET DISCOVERY</p>
+          <p class="exp-body">Global Nominee, international hackathon. Built the exoplanet-detection ML pipeline — full recognition on the NASA Space Apps roster and LinkedIn.</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-date">2023–2027</div>
+        <div>
+          <h3 class="exp-role">B.Tech, AI &amp; Data Science — SJCET Palai</h3>
+          <p class="exp-org">UNDERGRADUATE · KERALA</p>
+          <p class="exp-body">Focused on intelligent systems, computer vision and NLP — plus JoeBot, an RL agent for Call of Duty, and Kerala-relevant applied ML.</p>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="timeline reveal">
-    <h3 class="tl-title">The story so far — in 5 posts</h3>
-    <div class="tl-track">
-      <div class="tl-item"><span class="tl-dot">★</span><div><strong>First chatbot presentation</strong><small>ADSA inauguration · 3y ago</small></div></div>
-      <div class="tl-item"><span class="tl-dot">🏆</span><div><strong>1st Prize — Spectra 3.0</strong><small>Mobile App Development · 2y ago</small></div></div>
-      <div class="tl-item"><span class="tl-dot">💼</span><div><strong>PaceLab internship</strong><small>AI & Data Science · 1y ago</small></div></div>
-      <div class="tl-item"><span class="tl-dot">🤖</span><div><strong>Emotion Detection shipped</strong><small>Python × OpenCV · 1y ago</small></div></div>
-      <div class="tl-item"><span class="tl-dot">🎮</span><div><strong>JoeBot — RL agent for COD</strong><small>Reinforcement Learning · 10mo ago</small></div></div>
+<!-- ============ CONTACT — 04 ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div class="contact-inner">
+        <p class="contact-k">04 / CONTACT — LET’S BUILD</p>
+        <h2 class="contact-big">Let’s build<br><em>the next system.</em></h2>
+      </div>
+      <a class="contact-cta" href="mailto:joelw2200@gmail.com">joelw2200@gmail.com →</a>
     </div>
   </div>
 </section>
 
-<section id="journey" class="section journey">
-  <div class="sec-head reveal"><span class="ghost">06</span><span>SPECIAL EDITION — THE STORY</span><h2>The cinematic <em>story</em></h2><p>Code, curiosity, and places that shaped the mindset.</p></div>
-  <div class="journey-grid">
-    <div class="journey-img reveal"><img src="assets/cinematic-journey.png" alt="Joel's cinematic journey" onerror="this.parentElement.classList.add('no-img')"><div class="journey-cap">Think. Build. Experiment. Repeat.</div></div>
-    <div class="journey-steps">
-      <div class="step reveal"><i>01</i><div><h4>SJCET Palai</h4><p>B.Tech in AI & Data Science — building foundations in ML, deep learning, and intelligent systems.</p></div></div>
-      <div class="step reveal"><i>02</i><div><h4>NASA Space Apps 2025</h4><p>Global Nominee — “A World Away”: AI for exoplanet discovery and space data exploration.</p></div></div>
-      <div class="step reveal"><i>03</i><div><h4>Applied AI Builds</h4><p>Shipped vision, LLM, and agtech systems — from plant intelligence to real-time emotion detection.</p></div></div>
-      <div class="step reveal"><i>04</i><div><h4>Now</h4><p>Exploring Generative AI & Intelligent Systems — open to internships, research, and challenging problems.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <div class="contact glass reveal">
-    <span class="sec-kicker">CLASSIFIEDS — CORRESPONDENCE</span>
-    <h2>Let's build the <em>next system</em> together</h2>
-    <p>Have an AI problem, an internship opportunity, or just want to talk intelligent systems? My inbox is always open.</p>
-    <div class="contact-grid">
-      <a class="c-card" href="mailto:joelw2200@gmail.com"><strong>✉ joelw2200@gmail.com</strong><small>Email me ↗</small></a>
-      <a class="c-card" href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener"><strong>◆ github.com/Joel-Williams-Mathew</strong><small>Code & repos ↗</small></a>
-      <a class="c-card" href="https://www.linkedin.com/in/joel-williams-97b375272/" target="_blank" rel="noopener"><strong>in linkedin.com/in/joel-williams</strong><small>Connect ↗</small></a>
-    </div>
-    <div class="hero-btns" style="justify-content:center"><a class="btn primary magnetic" href="mailto:joelw2200@gmail.com">Say Hello →</a></div>
-  </div>
-</section>
-
-<div class="end-mark reveal" aria-hidden="true">✦ END OF THE EDITION — VOL. I ✦</div>
-
-<footer>
-  <p>© 2026 Joel Williams Mathew — Think. Build. Experiment. Repeat.</p>
-  <div><a href="#home">↑ Top</a><span> · </span><a href="https://github.com/Joel-Williams-Mathew" target="_blank" rel="noopener">GitHub</a></div>
+<!-- ============ COLOPHON ============ -->
+<footer class="foot">
+  <span><b>THE DOSSIER</b> · VOL. I — THE SPACE APPS EDITION</span>
+  <span><em>JOEL WILLIAMS MATHEW</em> · AI/ML DEVELOPER</span>
+  <span>KOZHIKODE · <b>EST. 2024</b></span>
 </footer>
 
 <aside class="chapters" aria-label="Chapter index">
-  <a class="chap" href="#home" data-ch="home"><i></i><small>FRONT PAGE</small></a>
-  <a class="chap" href="#about" data-ch="about"><i></i><small>A1 — THE REPORTER</small></a>
-  <a class="chap" href="#projects" data-ch="projects"><i></i><small>A2 — SPECIAL REPORT</small></a>
-  <a class="chap" href="#experience" data-ch="experience"><i></i><small>A3 — DISPATCHES</small></a>
-  <a class="chap" href="#resume" data-ch="resume"><i></i><small>A4 — PUBLIC RECORD</small></a>
-  <a class="chap" href="#beyond" data-ch="beyond"><i></i><small>B1 — LIFE PAGES</small></a>
-  <a class="chap" href="#journey" data-ch="journey"><i></i><small>B2 — THE STORY</small></a>
-  <a class="chap" href="#contact" data-ch="contact"><i></i><small>C1 — CLASSIFIEDS</small></a>
+  <a class="chap" href="#top" data-ch="top"><i></i><small>PROLOGUE</small></a>
+  <a class="chap" href="#about" data-ch="about"><i></i><small>A1 â€” 01 ABOUT</small></a>
+  <a class="chap" href="#work" data-ch="work"><i></i><small>02 â€” CASES</small></a>
+  <a class="chap" href="#experience" data-ch="experience"><i></i><small>03 â€” FIELD NOTES</small></a>
+  <a class="chap" href="#contact" data-ch="contact"><i></i><small>04 â€” CONTACT</small></a>
 </aside>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <span class="lb-close" id="lbClose" aria-label="Close">×</span>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">‹</button>
-  <figure class="lb-fig"><img id="lbImg" alt="Full-screen view"><figcaption id="lbCap"></figcaption></figure>
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">›</button>
-  <div class="lb-count mono" id="lbCount"></div>
-  <div class="lb-hint">← → navigate · Esc close · Click to zoom</div>
-</div>
-<script src="script.js?v=4"></script>
-  <script>(function(){function hide(){var p=document.getElementById("preloader");if(p){p.style.opacity="0";p.style.visibility="hidden";setTimeout(function(){try{p.remove()}catch(e){}},700)}}setTimeout(hide,1800)})();</script>
+<script src="script.js?v=5"></script>
 </body>
 </html>

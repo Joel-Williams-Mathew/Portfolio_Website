@@ -1,158 +1,165 @@
-document.documentElement.classList.add('reveal-ready')
-document.documentElement.classList.add("js")
+/* JOEL WILLIAMS MATHEW —DOSSIER · global bootstrap (defensive) */
 // Preloader
-const pre=document.getElementById('preloader'),preBar=document.getElementById('preBar'),preText=document.getElementById('preText');
-const preSteps=['loading universe_','warming nebula_','calibrating stars_','deploying intelligence_'];let pv=0;
-const preIv=setInterval(()=>{pv+=Math.random()*28+10;if(pv>=100){pv=100;clearInterval(preIv);setTimeout(()=>{pre.style.opacity='0';pre.style.visibility='hidden';setTimeout(()=>pre.remove(),650)},380)}preBar.style.width=pv+'%';preText.textContent=preSteps[Math.min(preSteps.length-1,Math.floor(pv/26))]},140);
+(function () {
+  var pre = document.getElementById('preloader');
+  if (!pre) return;
+  var done = function () {
+    pre.style.opacity = '0';
+    pre.style.visibility = 'hidden';
+    setTimeout(function () { try { pre.remove(); } catch (e) {} }, 650);
+  };
+  var preBar = document.getElementById('preBar'), preText = document.getElementById('preText');
+  var steps = ['loading universe_', 'warming nebula_', 'calibrating stars_', 'deploying intelligence_'];
+  var pv = 0, iv = setInterval(function () {
+    pv += Math.random() * 28 + 10;
+    if (pv >= 100) { pv = 100; clearInterval(iv); setTimeout(done, 380); }
+    if (preBar) preBar.style.width = pv + '%';
+    if (preText) preText.textContent = steps[Math.min(steps.length - 1, Math.floor(pv / 26))];
+  }, 140);
+  // Hold no more than 3.5s
+  setTimeout(function () { try { clearInterval(iv); done(); } catch (e) {} }, 3500);
+})();
 
-// Stars + shooting stars
-const c=document.getElementById('stars'),x=c.getContext('2d');let W,H,stars=[],shoots=[];
-function size(){W=c.width=innerWidth;H=c.height=innerHeight;stars=Array.from({length:180},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,s:Math.random()*.35+.06,o:Math.random()*.6+.2}))}
-size();addEventListener('resize',size);
-setInterval(()=>{if(shoots.length<2&&Math.random()>.55)shoots.push({x:Math.random()*W*.7+W*.15,y:Math.random()*H*.25,vx:6+Math.random()*4,vy:2.5+Math.random()*2,life:1})},1400);
-(function loop(){x.clearRect(0,0,W,H);stars.forEach(s=>{s.y+=s.s;if(s.y>H)s.y=0;s.o+=Math.random()*.04-.02;s.o=Math.max(.15,Math.min(.85,s.o));x.globalAlpha=s.o;x.fillStyle='#fff';x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill()});
-shoots=shoots.filter(s=>s.life>0);shoots.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.life-=.018;const g=x.createLinearGradient(s.x,s.y,s.x-s.vx*9,s.y-s.vy*9);g.addColorStop(0,'rgba(255,255,255,'+(.9*s.life)+')');g.addColorStop(1,'rgba(255,255,255,0)');x.globalAlpha=1;x.strokeStyle=g;x.lineWidth=2;x.beginPath();x.moveTo(s.x,s.y);x.lineTo(s.x-s.vx*9,s.y-s.vy*9);x.stroke()});x.globalAlpha=1;requestAnimationFrame(loop)})();
-
-// Typed
-const roles=['AI/ML Developer','Generative AI Builder','Intelligent Systems Designer','Computer Vision Explorer'];
-const typedEl=document.getElementById('typed');let ri=0,ci=0,del=false;
-(function type(){const word=roles[ri];typedEl.textContent=word.slice(0,ci);if(!del){ci++;if(ci>word.length){del=true;return setTimeout(type,1800)}}else{ci--;if(ci===0){del=false;ri=(ri+1)%roles.length}}setTimeout(type,del?38:70)})();
-
-// Marquee
-const items=['PYTHON','TENSORFLOW','LLMS','LANGCHAIN','RAG','OPENCV','CNN','REACT','NASA SPACE APPS','GEN AI'];
-document.getElementById('marquee').innerHTML=[...items,...items].map(t=>`<span>✦ ${t}</span>`).join('');
-
-// Reveal + bars + counters
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.style.getPropertyValue('--w'));
-e.target.querySelectorAll('[data-count]').forEach(el=>{const n=+el.dataset.count,dec=n%1!==0;let v=0;const step=dec?n/34:n/30;const iv=setInterval(()=>{v+=step;if(v>=n){v=n;clearInterval(iv)}el.textContent=dec?v.toFixed(1):Math.ceil(v)},40)});io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Stage 3: sections draw their amber press rule across on entry
-const ioSections=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ioSections.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.section').forEach(el=>ioSections.observe(el));
-
-// Cursor + trail + magnetic
-const cursor=document.getElementById('cursor');
-const trail=document.getElementById('trail');
-addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
-  if(reduceMotion)return;const d=document.createElement('div');d.className='trail-dot';d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';trail.appendChild(d);requestAnimationFrame(()=>{d.style.transform='translate(-50%,-50%) scale(0)';d.style.opacity='0'});setTimeout(()=>d.remove(),380)});
-const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('grow'));el.addEventListener('mouseleave',()=>cursor.classList.remove('grow'))});
-document.querySelectorAll('.magnetic').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.18}px)`});el.addEventListener('mouseleave',()=>el.style.transform='')});
-
-// Tilt + spotlight
-document.querySelectorAll('[data-tilt]').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;card.style.setProperty('--mx',px*100+'%');card.style.setProperty('--my',py*100+'%');card.style.transform=`perspective(900px) rotateY(${(px-.5)*10}deg) rotateX(${(.5-py)*10}deg) translateY(-4px)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
-const tiltCard=document.getElementById('tiltCard');
-if(tiltCard){tiltCard.addEventListener('mousemove',e=>{const r=tiltCard.getBoundingClientRect();tiltCard.style.transform=`perspective(800px) rotateY(${((e.clientX-r.left)/r.width-.5)*14}deg) rotateX(${(.5-(e.clientY-r.top)/r.height)*14}deg)`});tiltCard.addEventListener('mouseleave',()=>tiltCard.style.transform='')}
-
-// Split headline + staggered entrances
-const h1=document.querySelector('.hero-title');
-if(h1&&!reduceMotion){h1.innerHTML=h1.innerHTML.split('<br>').map(line=>'<span class="h-line">'+line+'</span>').join('<br>');h1.querySelectorAll('.h-line').forEach((l,i)=>{l.style.display='inline';l.style.animation='riseIn .9s cubic-bezier(.2,.9,.2,1) '+(i*0.13)+'s both'})}
-const stg=document.querySelectorAll('.beyond-grid .card,.testi-grid blockquote,.gal-item,.tl-item');
-const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const idx=[...e.target.parentElement.children].indexOf(e.target);e.target.style.transitionDelay=(idx*0.09)+'s';e.target.classList.add('in');io2.unobserve(e.target)}}),{threshold:.15});
-stg.forEach(el=>{if(!el.classList.contains('reveal'))el.classList.add('reveal');io2.observe(el)});
-
-// Clock + status + parallax + lightbox + glitch
-function tick(){const t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});const cl=document.getElementById('clock');if(cl)cl.textContent=t+' IST';const st=document.getElementById('statusTime');if(st)st.textContent=t}
-tick();setInterval(tick,30000);
-document.querySelectorAll('.li-card h3,.project h3').forEach(h=>h.classList.add('glitch-hover'));
-document.querySelectorAll('.btn.primary').forEach(b=>b.classList.add('glow-btn'));
-const parallaxEls=document.querySelectorAll('.li-media img,.spot-media img,.journey-img img,.avatar-wrap img');
-function parallax(){const y=scrollY;parallaxEls.forEach(img=>{const r=img.parentElement.getBoundingClientRect();const off=(r.top+r.bottom)/2-innerHeight/2;img.style.transform='translateY('+(off*-0.015)+'px) scale(1.03)'});requestAnimationFrame(parallax)}
-if(!reduceMotion)requestAnimationFrame(parallax);
-// Professional lightbox gallery
-const galleryImgs=[...document.querySelectorAll('.li-media img,.spot-media img,.journey-img img,.avatar-wrap img,.gal-item img')].filter(i=>!i.parentElement.classList.contains('empty'));
-const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCount');
-let lbIdx=0;
-function openLb(idx){lbIdx=(idx+galleryImgs.length)%galleryImgs.length;const img=galleryImgs[lbIdx];lbImg.src=img.src;lbImg.classList.remove('zoomed');lbCap.textContent=img.closest('.gal-item')?.dataset.cap||img.alt||'';lbCount.textContent=(lbIdx+1)+' / '+galleryImgs.length;lb.classList.add('open');document.body.style.overflow='hidden'}
-function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
-galleryImgs.forEach((img,i)=>{const holder=img.closest('.gal-item')||img;holder.style.cursor='zoom-in';holder.addEventListener('click',()=>openLb(i))});
-document.getElementById('lbClose').addEventListener('click',closeLb);
-document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();openLb(lbIdx-1)});
-document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();openLb(lbIdx+1)});
-lbImg.addEventListener('click',e=>{e.stopPropagation();lbImg.classList.toggle('zoomed')});
-lb.addEventListener('click',e=>{if(!e.target.closest('.lb-nav')&&e.target!==lbImg)closeLb()});
-addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')openLb(lbIdx-1);if(e.key==='ArrowRight')openLb(lbIdx+1)});
-
-// Nav + progress + theme
-document.getElementById('burger').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
-addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
-const themeSelect=document.getElementById('themeSelect');
-function setTheme(t){document.documentElement.dataset.theme=t;localStorage.setItem('jw-theme',t);if(themeSelect)themeSelect.value=t}
-themeSelect.addEventListener('change',e=>setTheme(e.target.value));
-setTheme(localStorage.getItem('jw-theme')||'nebula');
-
-// Resume button state
-(function(){const btn=document.getElementById('resumeBtn'),note=document.getElementById('resumeNote');if(!btn)return;fetch('assets/joel-resume.pdf',{method:'HEAD'}).then(r=>{if(r.ok){btn.style.opacity='1';note.textContent='PDF found — click to download.'}else{btn.style.opacity='.55';btn.setAttribute('aria-disabled','true')}}).catch(()=>{btn.style.opacity='.55'})})();
-
-// LinkedIn filter
-document.querySelectorAll('.li-filter').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.li-filter').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('[data-cat]').forEach(card=>{
-      const show=f==='all'||card.dataset.cat===f;
-      card.classList.toggle('hide',!show);
-      if(show){card.classList.add('in')}
+// Starfield canvas
+(function () {
+  var c = document.getElementById('stars');
+  if (!c) return;
+  var x = c.getContext && c.getContext('2d');
+  if (!x) return;
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W, H, stars = [], shoots = [];
+  function size() {
+    W = c.width = innerWidth; H = c.height = innerHeight;
+    stars = Array.from({ length: 180 }, function () {
+      return { x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.6 + .3, s: Math.random() * .35 + .06, o: Math.random() * .6 + .2 };
     });
+  }
+  size();
+  addEventListener('resize', size);
+  setInterval(function () {
+    if (shoots.length < 2 && Math.random() > .55) shoots.push({ x: Math.random() * W * .7 + W * .15, y: Math.random() * H * .25, vx: 6 + Math.random() * 4, vy: 2.5 + Math.random() * 2, life: 1 });
+  }, 1400);
+  (function loop() {
+    x.clearRect(0, 0, W, H);
+    stars.forEach(function (s) {
+      s.y += s.s; if (s.y > H) s.y = 0;
+      s.o += Math.random() * .04 - .02; s.o = Math.max(.15, Math.min(.85, s.o));
+      x.globalAlpha = s.o; x.fillStyle = '#fff'; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 7); x.fill();
+    });
+    shoots = shoots.filter(function (s) { return s.life > 0; });
+    shoots.forEach(function (s) {
+      s.x += s.vx; s.y += s.vy; s.life -= .018;
+      var g = x.createLinearGradient(s.x, s.y, s.x - s.vx * 9, s.y - s.vy * 9);
+      g.addColorStop(0, 'rgba(255,255,255,' + (.9 * s.life) + ')');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      x.globalAlpha = 1; x.strokeStyle = g; x.lineWidth = 2; x.beginPath(); x.moveTo(s.x, s.y); x.lineTo(s.x - s.vx * 9, s.y - s.vy * 9); x.stroke();
+    });
+    x.globalAlpha = 1; requestAnimationFrame(loop);
+  })();
+})();
+
+// Typed hero line
+(function () {
+  var roles = ['AI/ML Developer', 'Generative AI Builder', 'Intelligent Systems Designer', 'Computer Vision Explorer'];
+  var el = document.getElementById('typed');
+  if (!el) return;
+  var ri = 0, ci = 0, del = false;
+  (function type() {
+    var word = roles[ri];
+    el.textContent = word.slice(0, ci);
+    if (!del) { ci++; if (ci > word.length) { del = true; return setTimeout(type, 1800); } }
+    else { ci--; if (ci === 0) { del = false; ri = (ri + 1) % roles.length; } }
+    setTimeout(type, del ? 38 : 70);
+  })();
+})();
+
+// Marquee ticker
+(function () {
+  var items = ['PYTHON', 'TENSORFLOW', 'LLMS', 'LANGCHAIN', 'RAG', 'OPENCV', 'CNN', 'REACT', 'NASA SPACE APPS', 'GEN AI'];
+  var mq = document.getElementById('marquee');
+  if (!mq) return;
+  mq.innerHTML = items.concat(items).map(function (t) { return '<span><b>✦</b> ' + t + '</span>'; }).join('');
+})();
+
+// Reveal on scroll (IntersectionObserver)
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; });
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; e.target.style.filter = 'none'; io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+// Chapter dots / section rail
+(function () {
+  var chaps = Array.prototype.slice.call(document.querySelectorAll('.chap'));
+  if (!('IntersectionObserver' in window)) return;
+  var secio = new IntersectionObserver(function (es) {
+    es.forEach(function (en) {
+      if (en.isIntersecting) { chaps.forEach(function (c) { c.classList.toggle('on', c.dataset.ch === en.target.id); }); }
+    });
+  }, { threshold: 0.35 });
+  ['top', 'about', 'work', 'experience', 'contact'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) secio.observe(el);
   });
-});
-
-// Space scene parallax ---------------------------------------------------------
-// Every element with data-depth drifts by scroll position * its depth, so the
-// planet, moon, satellite and orbit rings move at different speeds.
-(function(){
-  var els = document.querySelectorAll('.space-scene [data-depth]');
-  if(!els.length) return;
-
-  var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!motionOK) return;
-
-  var latest = 0, ticking = false;
-
-  function apply(){
-    els.forEach(function(el){
-      var d = parseFloat(el.dataset.depth) || 0;
-      el.style.transform = 'translate3d(0,' + (latest * -d * 6).toFixed(2) + 'px,0)';
-    });
-    ticking = false;
-  }
-
-  function onScroll(){
-    latest = window.scrollY || window.pageYOffset || 0;
-    if(!ticking){ ticking = true; requestAnimationFrame(apply); }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  apply();
 })();
 
-// Live GitHub contribution stats ----------------------------------------------
-// streak.json is refreshed hourly by a GitHub Action in the profile repo, and
-// served from raw.githubusercontent.com with a cache-buster so it is always
-// current. Real-time on the site - no commits to this repo needed.
-(function(){
-  var t = document.getElementById('liveContrib');
-  var c = document.getElementById('liveStreak');
-  var l = document.getElementById('liveLongest');
-  if(!t) return;
-
-  var URL_JSON = 'https://raw.githubusercontent.com/Joel-Williams-Mathew/Joel-Williams-Mathew/main/streak.json';
-
-  fetch(URL_JSON + '?t=' + Date.now(), { cache: 'no-store' })
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){
-      if(!d) return;
-      if(d.total   != null) t.textContent = Number(d.total).toLocaleString();
-      if(d.current != null) c.textContent = d.current;
-      if(d.longest != null) l.textContent = d.longest;
-    })
-    .catch(function(){ /* leave the dashes */ });
+// Scroll progress bar
+(function () {
+  var bar = document.getElementById('progress');
+  if (!bar) return;
+  var onScroll = function () {
+    var h = document.documentElement;
+    var max = Math.max(1, h.scrollHeight - h.clientHeight);
+    bar.style.width = (h.scrollTop / max * 100) + '%';
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 
+// Clock
+(function () {
+  var cl = document.getElementById('clock');
+  if (!cl) return;
+  var tick = function () {
+    var t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    cl.textContent = t + ' IST';
+  };
+  tick();
+  setInterval(tick, 30000);
+})();
 
-// Stage 9: chapter marks - highlight the section you are reading
-const chaps=[...document.querySelectorAll('.chap')];
-const chapSecio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){chaps.forEach(c=>c.classList.toggle('on',c.dataset.ch===en.target.id))}}),{threshold:.35});
-['home','about','projects','experience','resume','beyond','journey','contact'].forEach(id=>{const el=document.getElementById(id);if(el)chapSecio.observe(el)});
+// Theme toggle
+(function () {
+  var sel = document.getElementById('themeSelect');
+  if (!sel) return;
+  var apply = function (t) {
+    document.documentElement.dataset.theme = t;
+    sel.value = t;
+    try { localStorage.setItem('jw-theme', t); } catch (e) {}
+  };
+  sel.addEventListener('change', function (e) { apply(e.target.value); });
+  try {
+    var saved = localStorage.getItem('jw-theme');
+    if (saved) apply(saved);
+  } catch (e) {}
+})();
+
+// Resume button state (best effort)
+(function () {
+  var btn = document.getElementById('resumeBtn');
+  var note = document.getElementById('resumeNote');
+  if (!btn) return;
+  try {
+    fetch('assets/joel-resume.pdf', { method: 'HEAD' }).then(function (r) {
+      if (r.ok) { btn.style.opacity = '1'; } else { btn.style.opacity = '.55'; btn.setAttribute('aria-disabled', 'true'); }
+    }).catch(function () { btn.style.opacity = '.55'; });
+  } catch (e) { btn.style.opacity = '.55'; }
+})();
