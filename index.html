@@ -7,6 +7,26 @@
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
   background-size:220px 220px;animation:grainFx 1.3s steps(4) infinite}
 @keyframes grainFx{0%{transform:translate(0,0)}33%{transform:translate(-14px,8px)}66%{transform:translate(11px,-10px)}100%{transform:translate(0,0)}}
+/* ===== SCROLL REVEAL + precision polish ===== */
+.rx{opacity:1;transform:none;filter:none}
+html.reveal-ready .rx{opacity:0;transform:translateY(38px);filter:blur(9px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s cubic-bezier(.2,.8,.2,1)}
+html.reveal-ready .rx.rx-in{opacity:1;transform:none;filter:none}
+
+/* shimmer on amber surname (constant) */
+.name .s3{background:linear-gradient(110deg,#E2B15C 0%,#F6D38A 25%,#FB923C 50%,#E2B15C 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ember 6s linear infinite}
+@keyframes ember{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* case hover: deeper depth + number fills amber */
+.case{transition:transform .4s cubic-bezier(.2,.9,.2,1),border-color .4s,box-shadow .4s}
+.case:hover .case-num{color:var(--amber);-webkit-text-stroke:0}
+.case:hover{box-shadow:0 24px 70px rgba(226,177,92,.12);border-color:rgba(226,177,92,.45)}
+.case-side span{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.case:hover .case-side span{transform:scale(1.18)}
+
+/* ambient pulse CTA */
+.btn.amber{animation:ctaPulse 3.6s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{box-shadow:0 14px 44px rgba(226,177,92,.28)}50%{box-shadow:0 14px 62px rgba(226,177,92,.44)}}
+
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
 .pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
@@ -217,6 +237,26 @@ h2.sec-title i{color:var(--amber);font-style:normal}
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
   background-size:220px 220px;animation:grainFx 1.3s steps(4) infinite}
 @keyframes grainFx{0%{transform:translate(0,0)}33%{transform:translate(-14px,8px)}66%{transform:translate(11px,-10px)}100%{transform:translate(0,0)}}
+/* ===== SCROLL REVEAL + precision polish ===== */
+.rx{opacity:1;transform:none;filter:none}
+html.reveal-ready .rx{opacity:0;transform:translateY(38px);filter:blur(9px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s cubic-bezier(.2,.8,.2,1)}
+html.reveal-ready .rx.rx-in{opacity:1;transform:none;filter:none}
+
+/* shimmer on amber surname (constant) */
+.name .s3{background:linear-gradient(110deg,#E2B15C 0%,#F6D38A 25%,#FB923C 50%,#E2B15C 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ember 6s linear infinite}
+@keyframes ember{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* case hover: deeper depth + number fills amber */
+.case{transition:transform .4s cubic-bezier(.2,.9,.2,1),border-color .4s,box-shadow .4s}
+.case:hover .case-num{color:var(--amber);-webkit-text-stroke:0}
+.case:hover{box-shadow:0 24px 70px rgba(226,177,92,.12);border-color:rgba(226,177,92,.45)}
+.case-side span{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.case:hover .case-side span{transform:scale(1.18)}
+
+/* ambient pulse CTA */
+.btn.amber{animation:ctaPulse 3.6s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{box-shadow:0 14px 44px rgba(226,177,92,.28)}50%{box-shadow:0 14px 62px rgba(226,177,92,.44)}}
+
 /* ===== compat layer: preloader / stars / progress / marquee / chapters ===== */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:2000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
 .pre-bar{width:min(280px,70vw);height:2px;background:rgba(245,239,227,.08);margin-top:18px;overflow:hidden}
